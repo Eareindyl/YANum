@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "n3o88akIXrk=",
+  "success": true,
+  "projectFilePath": "/Users/mail120978/Developer/F#/YANum/src/YANum.Core/YANum.Core.fsproj",
+  "expectedPackageFiles": [
+    "/Users/mail120978/.nuget/packages/fsharp.core/10.1.202/fsharp.core.10.1.202.nupkg.sha512"
+  ],
+  "logs": []
+}

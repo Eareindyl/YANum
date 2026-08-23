@@ -1,0 +1,2 @@
+/Users/mail120978/Developer/F#/YANum/bench/YANum.Benchmarks/obj/Debug/net10.0/YANum.Benchmarks.AssemblyInfoInputs.cache
+/Users/mail120978/Developer/F#/YANum/bench/YANum.Benchmarks/obj/Debug/net10.0/YANum.Benchmarks.AssemblyInfo.fs

@@ -1,0 +1,2109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>YANum.Core</name></assembly>
+<members>
+<member name="M:YANum.Core.YANumValueError.#ctor(System.String)">
+ <summary>Creates the exception with a message.</summary>
+ <param name="message">Description naming the argument and the constraint it broke.</param>
+</member>
+<member name="T:YANum.Core.YANumValueError">
+ <summary>A bad argument value that is neither a type nor a shape problem.</summary>
+</member>
+<member name="M:YANum.Core.YANumOverflowError.#ctor(System.String)">
+ <summary>Creates the exception with a message.</summary>
+ <param name="message">Description naming the value and the destination.</param>
+</member>
+<member name="T:YANum.Core.YANumOverflowError">
+ <summary>A value does not fit its destination (scalar out of range, string too long).</summary>
+</member>
+<member name="M:YANum.Core.YANumShapeError.#ctor(System.String)">
+ <summary>Creates the exception with a message.</summary>
+ <param name="message">Description naming the operation and the shapes involved.</param>
+</member>
+<member name="T:YANum.Core.YANumShapeError">
+ <summary>A broadcast, reshape, rank or axis failure.</summary>
+</member>
+<member name="M:YANum.Core.YANumTypeError.#ctor(System.String)">
+ <summary>Creates the exception with a message.</summary>
+ <param name="message">Description naming the operation and the dtypes involved.</param>
+</member>
+<member name="T:YANum.Core.YANumTypeError">
+ <summary>An illegal dtype or dtype combination for the requested operation.</summary>
+</member>
+<member name="M:YANum.Core.YANumException.#ctor(System.String,System.Exception)">
+ <summary>Creates the exception with a message and an inner exception.</summary>
+ <param name="message">Human-readable description naming the operation involved.</param>
+ <param name="inner">The underlying cause.</param>
+</member>
+<member name="M:YANum.Core.YANumException.#ctor(System.String)">
+ <summary>Creates the exception with a message.</summary>
+ <param name="message">Human-readable description naming the operation involved.</param>
+</member>
+<member name="T:YANum.Core.YANumException">
+ <summary>
+ Base of every exception YANum raises. Catch this to catch anything the library
+ throws deliberately.
+ </summary>
+ <remarks>
+ These are ordinary .NET exception classes rather than F# <c>exception</c>
+ declarations, because F# exception declarations cannot nominate a base class and
+ the specification requires a common base.
+ </remarks>
+</member>
+<member name="F:YANum.Core.Complex32.Imaginary">
+ <summary>The imaginary component.</summary>
+</member>
+<member name="F:YANum.Core.Complex32.Real">
+ <summary>The real component.</summary>
+</member>
+<member name="M:YANum.Core.Complex32.op_UnaryPlus(YANum.Core.Complex32)">
+ <summary>Unary plus; returns the value unchanged.</summary>
+ <param name="a">The value.</param>
+ <returns>The value.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.op_UnaryNegation(YANum.Core.Complex32)">
+ <summary>Negates a complex number.</summary>
+ <param name="a">The value.</param>
+ <returns>The additive inverse.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.op_Subtraction(YANum.Core.Complex32,YANum.Core.Complex32)">
+ <summary>Subtracts two complex numbers.</summary>
+ <param name="a">Left operand.</param>
+ <param name="b">Right operand.</param>
+ <returns>The difference.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.op_Multiply(YANum.Core.Complex32,YANum.Core.Complex32)">
+ <summary>Multiplies two complex numbers.</summary>
+ <param name="a">Left operand.</param>
+ <param name="b">Right operand.</param>
+ <returns>The product.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.op_Implicit(YANum.Core.Complex32)">
+ <summary>Widening conversion to <see cref="T:System.Numerics.Complex"/>.</summary>
+ <param name="c">The value to widen.</param>
+ <returns>The double-precision value.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.op_Explicit(System.Numerics.Complex)">
+ <summary>Narrowing conversion from <see cref="T:System.Numerics.Complex"/>.</summary>
+ <param name="c">The value to narrow.</param>
+ <returns>The single-precision value.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.op_Division(YANum.Core.Complex32,YANum.Core.Complex32)">
+ <summary>Divides two complex numbers, using the double-precision Smith algorithm.</summary>
+ <param name="a">Numerator.</param>
+ <param name="b">Denominator.</param>
+ <returns>The quotient.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.op_Addition(YANum.Core.Complex32,YANum.Core.Complex32)">
+ <summary>Adds two complex numbers.</summary>
+ <param name="a">Left operand.</param>
+ <param name="b">Right operand.</param>
+ <returns>The sum.</returns>
+</member>
+<member name="P:YANum.Core.Complex32.Zero">
+ <summary>The additive identity, <c>(0, 0)</c>.</summary>
+</member>
+<member name="P:YANum.Core.Complex32.Phase">
+ <summary>The argument in radians, in the range (-pi, pi].</summary>
+</member>
+<member name="P:YANum.Core.Complex32.One">
+ <summary>The multiplicative identity, <c>(1, 0)</c>.</summary>
+</member>
+<member name="P:YANum.Core.Complex32.NaN">
+ <summary>A value with both components <c>NaN</c>.</summary>
+</member>
+<member name="P:YANum.Core.Complex32.Magnitude">
+ <summary>The modulus, computed in double precision to avoid intermediate overflow.</summary>
+</member>
+<member name="P:YANum.Core.Complex32.ImaginaryOne">
+ <summary>The imaginary unit, <c>(0, 1)</c>.</summary>
+</member>
+<member name="M:YANum.Core.Complex32.ToString">
+ <summary>Renders as <c>(real, imaginary)</c>, matching <see cref="T:System.Numerics.Complex"/>.</summary>
+ <returns>The rendered value.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.ToComplex">
+ <summary>Widens this value to the double-precision <see cref="T:System.Numerics.Complex"/>.</summary>
+ <returns>The equivalent double-precision value.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.Sqrt(YANum.Core.Complex32)">
+ <summary>The principal square root. Backs F#'s <c>sqrt</c>.</summary>
+ <param name="c">The value.</param>
+ <returns>The principal square root.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.Pow(YANum.Core.Complex32,YANum.Core.Complex32)">
+ <summary>Raises a complex number to a complex power. Backs F#'s <c>( ** )</c>.</summary>
+ <param name="a">The base.</param>
+ <param name="b">The exponent.</param>
+ <returns>The principal value of <c>a</c> raised to <c>b</c>.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.OfComplex(System.Numerics.Complex)">
+ <summary>Narrows a double-precision complex number to single precision.</summary>
+ <param name="c">The value to narrow.</param>
+ <returns>The single-precision value.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.Log10(YANum.Core.Complex32)">
+ <summary>The principal base-10 logarithm. Backs F#'s <c>log10</c>.</summary>
+ <param name="c">The value.</param>
+ <returns>The principal base-10 logarithm.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.Log(YANum.Core.Complex32)">
+ <summary>The principal natural logarithm. Backs F#'s <c>log</c>.</summary>
+ <param name="c">The value.</param>
+ <returns>The principal natural logarithm.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.GetHashCode">
+ <summary>A hash consistent with equality except at <c>NaN</c>, as for any IEEE type.</summary>
+ <returns>The hash code.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.FromPolarCoordinates(System.Single,System.Single)">
+ <summary>Builds a value from polar coordinates.</summary>
+ <param name="magnitude">The modulus.</param>
+ <param name="phase">The argument in radians.</param>
+ <returns>The corresponding rectangular value.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.Exp(YANum.Core.Complex32)">
+ <summary>The exponential. Backs F#'s <c>exp</c>.</summary>
+ <param name="c">The value.</param>
+ <returns><c>e</c> raised to the value.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.Equals(System.Object)">
+ <summary>IEEE component-wise equality against a boxed value.</summary>
+ <param name="o">The boxed value to compare against.</param>
+ <returns><c>true</c> when <paramref name="o"/> is a <see cref="T:YANum.Core.Complex32"/> that compares equal.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.Equals(YANum.Core.Complex32)">
+ <summary>IEEE component-wise equality; <c>NaN</c> components compare unequal.</summary>
+ <param name="other">The value to compare against.</param>
+ <returns><c>true</c> when both components compare equal under IEEE rules.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.Conjugate(YANum.Core.Complex32)">
+ <summary>The complex conjugate.</summary>
+ <param name="c">The value.</param>
+ <returns>A value with the imaginary component negated.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.Abs(YANum.Core.Complex32)">
+ <summary>The modulus. Named to match <see cref="M:System.Numerics.Complex.Abs(System.Numerics.Complex)"/>.</summary>
+ <param name="c">The value.</param>
+ <returns>The modulus as a single-precision real.</returns>
+</member>
+<member name="M:YANum.Core.Complex32.#ctor(System.Single,System.Single)">
+ <summary>Creates a complex number from its two components.</summary>
+ <param name="real">Real component.</param>
+ <param name="imaginary">Imaginary component.</param>
+</member>
+<member name="T:YANum.Core.Complex32">
+ <summary>
+ A single-precision complex number: two <see cref="T:System.Single"/> components,
+ exactly 8 bytes, sequentially laid out with no padding.
+ </summary>
+ <remarks>
+ <para>
+ .NET ships only the double-precision <see cref="T:System.Numerics.Complex"/>, so YANum
+ supplies this type to back the <c>Complex64</c> dtype. The byte image is the
+ little-endian concatenation of <see cref="P:YANum.Core.Complex32.Real"/> then
+ <see cref="P:YANum.Core.Complex32.Imaginary"/>, which is what NumPy's
+ <c>complex64</c> stores.
+ </para>
+ <para>
+ Equality is IEEE on both components: a value with a <c>NaN</c> component is not equal
+ to itself, matching <see cref="T:System.Numerics.Complex"/>. There is no ordering.
+ </para>
+ <para>
+ The static members <c>Sqrt</c>, <c>Exp</c>, <c>Log</c> and <c>Pow</c> follow the
+ FSharp.Core naming convention, so F#'s built-in <c>sqrt</c>, <c>exp</c>, <c>log</c> and
+ <c>( ** )</c> work directly on this type. <c>Abs</c> returns a
+ <see cref="T:System.Single"/> magnitude (as <c>Complex.Abs</c> does), so F#'s <c>abs</c>,
+ whose signature is <c>^T -&gt; ^T</c>, deliberately does not resolve against it.
+ </para>
+ </remarks>
+</member>
+<member name="F:YANum.Core.DTypeOf`1.Value@">
+ <summary>The dtype of <c>'T</c>, resolved once per closed generic instantiation.</summary>
+</member>
+<member name="P:YANum.Core.DTypeOf`1.Value">
+ <summary>The dtype of <c>'T</c>, resolved once per closed generic instantiation.</summary>
+</member>
+<member name="T:YANum.Core.DTypeOf`1">
+ <summary>
+ The compile-time bridge from an element type to its dtype.
+ </summary>
+ <remarks>
+ <para>
+ <b>This does not constant-fold and cannot be made to</b> (Phase 0, spike 0.10): F# never
+ emits <c>initonly</c> static fields, so the JIT cannot promote the read to a constant.
+ The measured cost is about 0.06 ns per access.
+ </para>
+ <para>
+ <b>Read it once per operation and hoist it out of every loop.</b> A per-element read is a
+ defect and is treated as one in review.
+ </para>
+ </remarks>
+</member>
+<member name="F:YANum.Core.DType.Width">
+ <summary>Element count for <c>Utf16</c>/<c>Ascii</c>; 0 for every fixed dtype.</summary>
+</member>
+<member name="F:YANum.Core.DType.Code">
+ <summary>The dense discriminator. Kernel tables are indexed by this alone.</summary>
+</member>
+<member name="P:YANum.Core.DType.UInt8">
+ <summary>Unsigned 8-bit integer.</summary>
+</member>
+<member name="P:YANum.Core.DType.UInt64">
+ <summary>Unsigned 64-bit integer.</summary>
+</member>
+<member name="P:YANum.Core.DType.UInt32">
+ <summary>Unsigned 32-bit integer.</summary>
+</member>
+<member name="P:YANum.Core.DType.UInt16">
+ <summary>Unsigned 16-bit integer.</summary>
+</member>
+<member name="P:YANum.Core.DType.UInt128">
+ <summary>Unsigned 128-bit integer. No SIMD and no hardware arithmetic.</summary>
+</member>
+<member name="P:YANum.Core.DType.TimeSpan">
+ <summary>A <see cref="T:System.TimeSpan"/>.</summary>
+</member>
+<member name="P:YANum.Core.DType.TimeOnly">
+ <summary>A <see cref="T:System.TimeOnly"/>.</summary>
+</member>
+<member name="P:YANum.Core.DType.Name">
+ <summary>The canonical lowercase name, e.g. <c>float64</c>, <c>uint8</c>, <c>utf16&lt;16&gt;</c>.</summary>
+</member>
+<member name="P:YANum.Core.DType.MemcmpLegal">
+ <summary>
+ Whether byte comparison agrees with value equality for this dtype.
+ </summary>
+ <remarks>
+ This governs <b>only</b> the structural fast path of <c>array_equal</c>,
+ <c>NDArray.Equals</c> and cache keys. It never governs element-wise <c>.=</c>, which
+ always runs the dtype's real equality kernel so that IEEE semantics survive: floats
+ fail memcmp in both directions, since <c>-0.0</c> and <c>+0.0</c> differ in bytes but
+ compare equal, while two <c>NaN</c>s share bytes but compare unequal.
+ </remarks>
+</member>
+<member name="P:YANum.Core.DType.MantissaBits">
+ <summary>Mantissa bits for floating dtypes (11, 24 or 53); 0 for everything else.</summary>
+</member>
+<member name="P:YANum.Core.DType.Kind">
+ <summary>The classification used by promotion and kernel selection.</summary>
+</member>
+<member name="P:YANum.Core.DType.ItemSize">
+ <summary>Size of one element in bytes.</summary>
+ <remarks>
+ A method rather than a plain table lookup because the string dtypes derive their size
+ from <see cref="P:YANum.Core.DType.Width"/>.
+ </remarks>
+</member>
+<member name="P:YANum.Core.DType.IsString">
+ <summary>Whether this is one of the two fixed-width string dtypes.</summary>
+</member>
+<member name="P:YANum.Core.DType.IsSimdEligible">
+ <summary>Whether hardware SIMD kernels are available for this dtype.</summary>
+</member>
+<member name="P:YANum.Core.DType.IsNumeric">
+ <summary>Whether this dtype participates in arithmetic promotion.</summary>
+</member>
+<member name="P:YANum.Core.DType.IsInteger">
+ <summary>Whether this is an integral dtype (signed or unsigned, any width).</summary>
+</member>
+<member name="P:YANum.Core.DType.IntegerBits">
+ <summary>Value bit width for integral dtypes; 0 otherwise.</summary>
+</member>
+<member name="P:YANum.Core.DType.Int8">
+ <summary>Signed 8-bit integer.</summary>
+</member>
+<member name="P:YANum.Core.DType.Int64">
+ <summary>Signed 64-bit integer.</summary>
+</member>
+<member name="P:YANum.Core.DType.Int32">
+ <summary>Signed 32-bit integer.</summary>
+</member>
+<member name="P:YANum.Core.DType.Int16">
+ <summary>Signed 16-bit integer.</summary>
+</member>
+<member name="P:YANum.Core.DType.Int128">
+ <summary>Signed 128-bit integer. No SIMD and no hardware arithmetic.</summary>
+</member>
+<member name="P:YANum.Core.DType.Float64">
+ <summary>IEEE-754 binary64.</summary>
+</member>
+<member name="P:YANum.Core.DType.Float32">
+ <summary>IEEE-754 binary32.</summary>
+</member>
+<member name="P:YANum.Core.DType.Float16">
+ <summary>IEEE-754 binary16 (<see cref="T:System.Half"/>).</summary>
+</member>
+<member name="P:YANum.Core.DType.Decimal">
+ <summary>The .NET 128-bit base-10 decimal.</summary>
+</member>
+<member name="P:YANum.Core.DType.DateTimeOffset">
+ <summary>A <see cref="T:System.DateTimeOffset"/>.</summary>
+</member>
+<member name="P:YANum.Core.DType.DateTime">
+ <summary>A <see cref="T:System.DateTime"/>; <c>Kind</c> survives storage and retrieval.</summary>
+</member>
+<member name="P:YANum.Core.DType.DateOnly">
+ <summary>A <see cref="T:System.DateOnly"/>.</summary>
+</member>
+<member name="P:YANum.Core.DType.Complex64">
+ <summary>Complex with two <c>float32</c> components. NumPy naming: the number is total bits.</summary>
+ <remarks>This is <b>not</b> the .NET convention; <c>Complex64</c> is a pair of binary32.</remarks>
+</member>
+<member name="P:YANum.Core.DType.Complex128">
+ <summary>Complex with two <c>float64</c> components. NumPy naming: the number is total bits.</summary>
+ <remarks>This is <b>not</b> the .NET convention; <c>Complex128</c> is a pair of binary64.</remarks>
+</member>
+<member name="P:YANum.Core.DType.ClrType">
+ <summary>The CLR element type. For string dtypes this is the element of the backing buffer.</summary>
+</member>
+<member name="P:YANum.Core.DType.Char">
+ <summary>A single UTF-16 code unit. Promotes as <c>UInt16</c>.</summary>
+</member>
+<member name="P:YANum.Core.DType.Byte">
+ <summary>Unsigned 8-bit integer. The same value as <see cref="P:YANum.Core.DType.UInt8"/>.</summary>
+</member>
+<member name="P:YANum.Core.DType.Bool">
+ <summary>The 1-byte boolean dtype, always stored as 0 or 1.</summary>
+</member>
+<member name="P:YANum.Core.DType.Alignment">
+ <summary>Preferred element alignment in bytes.</summary>
+</member>
+<member name="M:YANum.Core.DType.Utf16(System.Int32)">
+ <summary>A fixed-width UTF-16 string dtype.</summary>
+ <param name="width">Number of UTF-16 code units per element; must be positive.</param>
+ <returns>The dtype occupying <c>2 * width</c> bytes per element.</returns>
+ <exception cref="T:YANum.Core.YANumValueError">The width is not positive.</exception>
+</member>
+<member name="M:YANum.Core.DType.ToString">
+ <summary>Returns <see cref="P:YANum.Core.DType.Name"/>.</summary>
+ <returns>The canonical dtype name.</returns>
+</member>
+<member name="M:YANum.Core.DType.OfCode(YANum.Core.DTypeCode)">
+ <summary>Builds a fixed (non-string) dtype from its code.</summary>
+ <param name="code">The dtype code; must not be <c>Utf16</c> or <c>Ascii</c>.</param>
+ <returns>The dtype.</returns>
+ <exception cref="T:YANum.Core.YANumValueError">The code names a width-parameterised string dtype.</exception>
+</member>
+<member name="M:YANum.Core.DType.Create(YANum.Core.DTypeCode,System.Int32)">
+ <summary>Builds a dtype from a code and a width, validating both.</summary>
+ <param name="code">The dtype code.</param>
+ <param name="width">Element count for string dtypes; ignored (and forced to 0) otherwise.</param>
+ <returns>The dtype.</returns>
+ <exception cref="T:YANum.Core.YANumValueError">The code is out of range, or a string width is not positive.</exception>
+</member>
+<member name="M:YANum.Core.DType.Ascii(System.Int32)">
+ <summary>A fixed-width ASCII string dtype.</summary>
+ <param name="width">Number of bytes per element; must be positive.</param>
+ <returns>The dtype occupying <c>width</c> bytes per element.</returns>
+ <exception cref="T:YANum.Core.YANumValueError">The width is not positive.</exception>
+</member>
+<member name="T:YANum.Core.DType">
+ <summary>
+ A dtype: a dense <see cref="T:YANum.Core.DTypeCode"/> plus a width that is meaningful
+ only for the fixed-width string dtypes.
+ </summary>
+ <remarks>
+ <para>
+ This is a parameterised struct rather than a flat enum because <c>Utf16</c> and
+ <c>Ascii</c> carry an element count. Everything else has <c>Width = 0</c>.
+ </para>
+ <para>
+ <b>Complex naming follows NumPy, not .NET.</b> The number is the total bit width, so
+ <c>Complex64</c> is a pair of <c>float32</c> and <c>Complex128</c> is a pair of
+ <c>float64</c>. This is deliberate and is the opposite of the .NET convention where the
+ number would name the component.
+ </para>
+ </remarks>
+</member>
+<member name="F:YANum.Core.DTypeCode.Ascii">
+ <summary>Fixed-width ASCII string of <c>Width</c> bytes.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Utf16">
+ <summary>Fixed-width UTF-16 string of <c>Width</c> code units.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.TimeSpan">
+ <summary>A <see cref="T:System.TimeSpan"/>.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.TimeOnly">
+ <summary>A <see cref="T:System.TimeOnly"/>.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.DateOnly">
+ <summary>A <see cref="T:System.DateOnly"/>.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.DateTimeOffset">
+ <summary>A <see cref="T:System.DateTimeOffset"/>.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.DateTime">
+ <summary>A <see cref="T:System.DateTime"/>, kind preserved.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Char">
+ <summary>A single UTF-16 code unit.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Complex128">
+ <summary>Complex with two binary64 components (NumPy naming: total bits).</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Complex64">
+ <summary>Complex with two binary32 components (NumPy naming: total bits).</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Decimal">
+ <summary>The .NET 128-bit base-10 decimal.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Float64">
+ <summary>IEEE-754 binary64.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Float32">
+ <summary>IEEE-754 binary32.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Float16">
+ <summary>IEEE-754 binary16.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.UInt128">
+ <summary>Unsigned 128-bit integer.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Int128">
+ <summary>Signed 128-bit integer.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.UInt64">
+ <summary>Unsigned 64-bit integer.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Int64">
+ <summary>Signed 64-bit integer.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.UInt32">
+ <summary>Unsigned 32-bit integer.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Int32">
+ <summary>Signed 32-bit integer.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.UInt16">
+ <summary>Unsigned 16-bit integer.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Int16">
+ <summary>Signed 16-bit integer.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.UInt8">
+ <summary>Unsigned 8-bit integer. Also spelled <c>Byte</c>.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Int8">
+ <summary>Signed 8-bit integer.</summary>
+</member>
+<member name="F:YANum.Core.DTypeCode.Bool">
+ <summary>1-byte boolean, normalised to 0 or 1.</summary>
+</member>
+<member name="T:YANum.Core.DTypeCode">
+ <summary>
+ The dense, byte-backed dtype discriminator. All kernel-table indexing uses this value
+ alone; the fixed-width string dtypes carry their width beside it in
+ <see cref="T:YANum.Core.DType"/>.
+ </summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.Str">
+ <summary>Fixed-width string dtypes.</summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.Duration">
+ <summary>An elapsed amount of time.</summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.Instant">
+ <summary>A point on a timeline (date and/or time of day).</summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.Char">
+ <summary>UTF-16 code units treated as a scalar dtype.</summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.Complex">
+ <summary>Complex numbers with floating-point components.</summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.Decimal">
+ <summary>The .NET base-10 <see cref="T:System.Decimal"/>.</summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.Float">
+ <summary>IEEE-754 binary floating point.</summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.UnsignedInt">
+ <summary>Unsigned integers.</summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.SignedInt">
+ <summary>Two's-complement signed integers.</summary>
+</member>
+<member name="F:YANum.Core.DTypeKind.Boolean">
+ <summary>The single-byte boolean dtype.</summary>
+</member>
+<member name="T:YANum.Core.DTypeKind">
+ <summary>Coarse classification of a dtype, used to drive promotion and kernel selection.</summary>
+</member>
+<member name="M:YANum.Core.Config.reset">
+ <summary>Restores every setting to its documented default.</summary>
+</member>
+<member name="M:YANum.Core.Config.push(Microsoft.FSharp.Core.FSharpFunc{YANum.Core.ConfigSnapshot,Microsoft.FSharp.Core.Unit})">
+ <summary>
+ Applies a scoped override. Use as
+ <c>use _ = Config.push (fun c -&gt; c.ErrorMode &lt;- Strict)</c>.
+ </summary>
+ <param name="mutate">Receives a fresh copy of the current settings to modify.</param>
+ <returns>A handle that restores the previous settings when disposed.</returns>
+ <remarks>The override is process-wide, not thread-local. Nested pushes restore in order.</remarks>
+</member>
+<member name="P:YANum.Core.Config.StringOverflow">
+ <summary>What happens when a string value exceeds its dtype width.</summary>
+</member>
+<member name="P:YANum.Core.Config.StrictIntegerPromotion">
+ <summary>When set, a signed/unsigned promotion with no exact signed result raises.</summary>
+</member>
+<member name="P:YANum.Core.Config.PrintThreshold">
+ <summary>Element count above which printing summarises.</summary>
+</member>
+<member name="P:YANum.Core.Config.PrintPrecision">
+ <summary>Significant digits used when printing floating-point values.</summary>
+</member>
+<member name="P:YANum.Core.Config.PrintEdgeItems">
+ <summary>Elements shown at each end of a summarised axis.</summary>
+</member>
+<member name="P:YANum.Core.Config.ParallelThreshold">
+ <summary>Element count above which an operation may go parallel.</summary>
+</member>
+<member name="P:YANum.Core.Config.MaxDegreeOfParallelism">
+ <summary>Upper bound on worker threads.</summary>
+</member>
+<member name="P:YANum.Core.Config.ErrorMode">
+ <summary>How strictly numerical edge cases are reported.</summary>
+</member>
+<member name="P:YANum.Core.Config.EnableSimd">
+ <summary>Whether SIMD kernels may be selected.</summary>
+</member>
+<member name="P:YANum.Core.Config.DeterministicReductions">
+ <summary>Whether reductions must produce bit-identical results across runs.</summary>
+</member>
+<member name="P:YANum.Core.Config.DefaultStorage">
+ <summary>Allocator used when none is named.</summary>
+</member>
+<member name="P:YANum.Core.Config.DefaultOrder">
+ <summary>Layout order used by creation functions that are not told otherwise.</summary>
+</member>
+<member name="P:YANum.Core.Config.DefaultInt">
+ <summary>Dtype used by integer creation functions that are not told otherwise.</summary>
+</member>
+<member name="P:YANum.Core.Config.DefaultFloat">
+ <summary>Dtype used by floating-point creation functions that are not told otherwise.</summary>
+</member>
+<member name="P:YANum.Core.Config.Current">
+ <summary>The live snapshot. Mutating it directly changes global behaviour immediately.</summary>
+</member>
+<member name="P:YANum.Core.Config.CheckAliasing">
+ <summary>Whether views and native storage lifetimes are audited at runtime.</summary>
+</member>
+<member name="P:YANum.Core.Config.BoundsChecking">
+ <summary>When element index bounds are checked.</summary>
+</member>
+<member name="P:YANum.Core.Config.BoundsCheckActive">
+ <summary>
+ Whether bounds checking is active right now, resolving
+ <see cref="T:YANum.Core.BoundsCheckMode"/>'s <c>DebugOnly</c> against the build
+ configuration of YANum.Core itself.
+ </summary>
+</member>
+<member name="T:YANum.Core.Config">
+ <summary>
+ Process-global configuration. Read at operation dispatch, never inside a loop.
+ </summary>
+ <remarks>
+ <b>This is process-wide, not thread-local, in v1.</b> A <see cref="M:YANum.Core.Config.push"/>
+ scope changes behaviour for every thread until it is disposed. Use it at start-up or in
+ single-threaded tests, not to vary behaviour between concurrent workers.
+ </remarks>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.PrintPrecision@">
+ <summary>Significant digits used when printing floating-point values.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.PrintEdgeItems@">
+ <summary>Elements shown at each end of a summarised axis.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.PrintThreshold@">
+ <summary>Element count above which printing summarises. Full summarisation lands in Phase 5.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.DeterministicReductions@">
+ <summary>Whether reductions must produce bit-identical results across runs. Unused in Phase 1.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.MaxDegreeOfParallelism@">
+ <summary>Upper bound on worker threads. Unused in Phase 1.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.ParallelThreshold@">
+ <summary>Element count above which an operation may go parallel. Unused in Phase 1.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.EnableSimd@">
+ <summary>Whether SIMD kernels may be selected. Unused in Phase 1.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.StringOverflow@">
+ <summary>What happens when a string value exceeds its dtype width.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.StrictIntegerPromotion@">
+ <summary>When set, a signed/unsigned promotion with no exact signed result raises instead of yielding <c>Float64</c>.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.CheckAliasing@">
+ <summary>Whether views and native storage lifetimes are audited at runtime.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.BoundsChecking@">
+ <summary>When element index bounds are checked.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.ErrorMode@">
+ <summary>How strictly numerical edge cases are reported.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.DefaultStorage@">
+ <summary>Allocator used when none is named.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.DefaultInt@">
+ <summary>Dtype used by integer creation functions that are not told otherwise. <c>Int64</c> on every platform.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.DefaultFloat@">
+ <summary>Dtype used by floating-point creation functions that are not told otherwise.</summary>
+</member>
+<member name="F:YANum.Core.ConfigSnapshot.DefaultOrder@">
+ <summary>Layout order used by creation functions that are not told otherwise.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.StringOverflow(YANum.Core.StringOverflow)">
+ <summary>What happens when a string value exceeds its dtype width.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.StrictIntegerPromotion(System.Boolean)">
+ <summary>When set, a signed/unsigned promotion with no exact signed result raises instead of yielding <c>Float64</c>.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.PrintThreshold(System.Int32)">
+ <summary>Element count above which printing summarises. Full summarisation lands in Phase 5.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.PrintPrecision(System.Int32)">
+ <summary>Significant digits used when printing floating-point values.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.PrintEdgeItems(System.Int32)">
+ <summary>Elements shown at each end of a summarised axis.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.ParallelThreshold(System.Int32)">
+ <summary>Element count above which an operation may go parallel. Unused in Phase 1.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.MaxDegreeOfParallelism(System.Int32)">
+ <summary>Upper bound on worker threads. Unused in Phase 1.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.ErrorMode(YANum.Core.ErrorMode)">
+ <summary>How strictly numerical edge cases are reported.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.EnableSimd(System.Boolean)">
+ <summary>Whether SIMD kernels may be selected. Unused in Phase 1.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DeterministicReductions(System.Boolean)">
+ <summary>Whether reductions must produce bit-identical results across runs. Unused in Phase 1.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DefaultStorage(YANum.Core.StorageBackend)">
+ <summary>Allocator used when none is named.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DefaultOrder(YANum.Core.Order)">
+ <summary>Layout order used by creation functions that are not told otherwise.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DefaultInt(YANum.Core.DType)">
+ <summary>Dtype used by integer creation functions that are not told otherwise. <c>Int64</c> on every platform.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DefaultFloat(YANum.Core.DType)">
+ <summary>Dtype used by floating-point creation functions that are not told otherwise.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.CheckAliasing(System.Boolean)">
+ <summary>Whether views and native storage lifetimes are audited at runtime.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.BoundsChecking(YANum.Core.BoundsCheckMode)">
+ <summary>When element index bounds are checked.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.StringOverflow">
+ <summary>What happens when a string value exceeds its dtype width.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.StrictIntegerPromotion">
+ <summary>When set, a signed/unsigned promotion with no exact signed result raises instead of yielding <c>Float64</c>.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.PrintThreshold">
+ <summary>Element count above which printing summarises. Full summarisation lands in Phase 5.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.PrintPrecision">
+ <summary>Significant digits used when printing floating-point values.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.PrintEdgeItems">
+ <summary>Elements shown at each end of a summarised axis.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.ParallelThreshold">
+ <summary>Element count above which an operation may go parallel. Unused in Phase 1.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.MaxDegreeOfParallelism">
+ <summary>Upper bound on worker threads. Unused in Phase 1.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.ErrorMode">
+ <summary>How strictly numerical edge cases are reported.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.EnableSimd">
+ <summary>Whether SIMD kernels may be selected. Unused in Phase 1.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DeterministicReductions">
+ <summary>Whether reductions must produce bit-identical results across runs. Unused in Phase 1.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DefaultStorage">
+ <summary>Allocator used when none is named.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DefaultOrder">
+ <summary>Layout order used by creation functions that are not told otherwise.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DefaultInt">
+ <summary>Dtype used by integer creation functions that are not told otherwise. <c>Int64</c> on every platform.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.DefaultFloat">
+ <summary>Dtype used by floating-point creation functions that are not told otherwise.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.CheckAliasing">
+ <summary>Whether views and native storage lifetimes are audited at runtime.</summary>
+</member>
+<member name="P:YANum.Core.ConfigSnapshot.BoundsChecking">
+ <summary>When element index bounds are checked.</summary>
+</member>
+<member name="M:YANum.Core.ConfigSnapshot.Clone">
+ <summary>Produces an independent copy of every setting.</summary>
+ <returns>A new snapshot with the same values.</returns>
+</member>
+<member name="T:YANum.Core.ConfigSnapshot">
+ <summary>
+ A complete set of configuration values. Mutable so that
+ <see cref="M:YANum.Core.Config.push"/> can hand one to a mutator.
+ </summary>
+</member>
+<member name="T:YANum.Core.StringOverflow.Truncate">
+ <summary>Silently keep the leading characters that fit.</summary>
+</member>
+<member name="T:YANum.Core.StringOverflow.Throw">
+ <summary>Raise <see cref="T:YANum.Core.YANumOverflowError"/>.</summary>
+</member>
+<member name="T:YANum.Core.StringOverflow">
+ <summary>What happens when a string value is longer than its fixed-width dtype.</summary>
+</member>
+<member name="T:YANum.Core.BoundsCheckMode.Never">
+ <summary>Never check. Out-of-range indices corrupt memory.</summary>
+</member>
+<member name="T:YANum.Core.BoundsCheckMode.DebugOnly">
+ <summary>Check only when YANum.Core itself was built with <c>DEBUG</c>.</summary>
+</member>
+<member name="T:YANum.Core.BoundsCheckMode.Always">
+ <summary>Always check, in every build.</summary>
+</member>
+<member name="T:YANum.Core.BoundsCheckMode">
+ <summary>When element index bounds are checked.</summary>
+</member>
+<member name="T:YANum.Core.ErrorMode.Strict">
+ <summary>Turn anything lossy or ambiguous into an exception.</summary>
+</member>
+<member name="T:YANum.Core.ErrorMode.NumPy">
+ <summary>Match NumPy's warning and error behaviour.</summary>
+</member>
+<member name="T:YANum.Core.ErrorMode.Fast">
+ <summary>Do the cheapest correct thing; do not spend time detecting conditions NumPy warns about.</summary>
+</member>
+<member name="T:YANum.Core.ErrorMode">
+ <summary>How strictly numerical edge cases are reported.</summary>
+</member>
+<member name="T:YANum.Core.StorageBackend.Native">
+ <summary>64-byte-aligned native memory. Reference counted; capacity limited only by the address space.</summary>
+</member>
+<member name="T:YANum.Core.StorageBackend.Managed">
+ <summary>A pinned GC array. Capped at <see cref="F:System.Array.MaxLength"/>; disposal is a no-op.</summary>
+</member>
+<member name="T:YANum.Core.StorageBackend">
+ <summary>Which allocator backs an array's storage.</summary>
+</member>
+<member name="T:YANum.Core.Order.K">
+ <summary>Keep whatever order the input already has, preferring C when ambiguous.</summary>
+</member>
+<member name="T:YANum.Core.Order.F">
+ <summary>Column-major: the first axis varies fastest.</summary>
+</member>
+<member name="T:YANum.Core.Order.C">
+ <summary>Row-major: the last axis varies fastest.</summary>
+</member>
+<member name="T:YANum.Core.Order">
+ <summary>Memory layout order for creation, reshaping and iteration.</summary>
+</member>
+<member name="P:YANum.Core.Storage.ReferenceCount">
+ <summary>The current reference count. Exposed for diagnostics and tests.</summary>
+</member>
+<member name="P:YANum.Core.Storage.Pointer">
+ <summary>The stable base address of the block.</summary>
+</member>
+<member name="P:YANum.Core.Storage.Length">
+ <summary>The size of the block in <b>bytes</b>.</summary>
+</member>
+<member name="P:YANum.Core.Storage.IsWritable">
+ <summary>Whether elements may be written through this block.</summary>
+</member>
+<member name="P:YANum.Core.Storage.IsFreed">
+ <summary>Whether the block has already been released.</summary>
+</member>
+<member name="P:YANum.Core.Storage.Backend">
+ <summary>Which allocator backs this block.</summary>
+</member>
+<member name="M:YANum.Core.Storage.Release">
+ <summary>
+ Drops one reference, releasing the block when the last one goes.
+ </summary>
+ <remarks>Releasing a managed block is a no-op beyond the bookkeeping.</remarks>
+</member>
+<member name="M:YANum.Core.Storage.PointerAs``1(System.IntPtr)">
+ <summary>A typed pointer into the block.</summary>
+ <param name="offsetElems">Offset from the base address, in <c>'T</c>-sized elements.</param>
+ <returns>A pointer to that element.</returns>
+ <remarks>The offset is <c>nativeint</c> so that blocks above 2^31 elements address correctly.</remarks>
+</member>
+<member name="M:YANum.Core.Storage.PinArray``1(``0[])">
+ <summary>
+ Pins a caller's array and wraps it without copying.
+ </summary>
+ <param name="array">The array to wrap. It stays pinned until the block is released.</param>
+ <returns>A block aliasing the array's elements.</returns>
+ <remarks>
+ The array is pinned with a <see cref="T:System.Runtime.InteropServices.GCHandle"/> for
+ the lifetime of the block, which the GC cannot move or compact around. Prefer copying
+ for long-lived arrays.
+ </remarks>
+</member>
+<member name="M:YANum.Core.Storage.Dispose">
+ <summary>
+ Drops this owner's reference. For the managed backend this is a no-op beyond bookkeeping.
+ </summary>
+</member>
+<member name="M:YANum.Core.Storage.ByteAddress(System.IntPtr)">
+ <summary>A byte address inside the block.</summary>
+ <param name="offsetBytes">Offset from the base address, in bytes.</param>
+ <returns>The absolute address.</returns>
+</member>
+<member name="M:YANum.Core.Storage.AsSpan``1(System.IntPtr,System.IntPtr)">
+ <summary>A typed span over a segment of the block.</summary>
+ <param name="offsetElems">Offset from the base address, in <c>'T</c>-sized elements.</param>
+ <param name="countElems">Number of elements in the span.</param>
+ <returns>A span over that segment.</returns>
+ <remarks>
+ <see cref="T:System.Span`1"/> carries an <c>int</c> length, so this is limited to
+ segments below 2^31 elements. The general path is
+ <see cref="M:YANum.Core.Storage.PointerAs``1(System.IntPtr)"/> with <c>nativeint</c> counters.
+ </remarks>
+ <exception cref="T:YANum.Core.YANumValueError">The segment is negative or does not fit an <c>int</c> length.</exception>
+</member>
+<member name="M:YANum.Core.Storage.AsByteSpan">
+ <summary>A byte span over the whole block.</summary>
+ <returns>A span covering every byte.</returns>
+ <exception cref="T:YANum.Core.YANumValueError">The block is larger than <c>Int32.MaxValue</c> bytes.</exception>
+</member>
+<member name="M:YANum.Core.Storage.AllocateZeroed(System.UIntPtr,YANum.Core.StorageBackend)">
+ <summary>Allocates a zero-filled block.</summary>
+ <param name="lengthBytes">Size in bytes.</param>
+ <param name="backend">Which allocator to use.</param>
+ <returns>The new block, with a reference count of 1.</returns>
+ <exception cref="T:YANum.Core.YANumValueError">The request exceeds the backend's cap.</exception>
+</member>
+<member name="M:YANum.Core.Storage.AllocateUninitialized(System.UIntPtr,YANum.Core.StorageBackend)">
+ <summary>Allocates a block whose contents are undefined.</summary>
+ <param name="lengthBytes">Size in bytes.</param>
+ <param name="backend">Which allocator to use.</param>
+ <returns>The new block, with a reference count of 1.</returns>
+ <remarks>Only use this for a buffer that is about to be fully overwritten.</remarks>
+ <exception cref="T:YANum.Core.YANumValueError">The request exceeds the backend's cap.</exception>
+</member>
+<member name="M:YANum.Core.Storage.AddRef">
+ <summary>Adds one to the reference count. Every view of this block must call it once.</summary>
+</member>
+<member name="T:YANum.Core.Storage">
+ <summary>
+ A flat, byte-addressed block of memory with a stable base address.
+ </summary>
+ <remarks>
+ <para>
+ <b>Managed backend (default).</b> A pinned array from the pinned object heap. Phase 0
+ confirmed the address survives repeated forced compacting gen2 collections, so the pointer
+ is taken once at construction and cached. <c>Dispose</c> is a no-op; the GC owns the
+ lifetime. Capacity is capped at <see cref="F:System.Array.MaxLength"/>.
+ </para>
+ <para>
+ <b>Native backend.</b> 64-byte-aligned native memory. It is reference counted: every array
+ referencing the block holds one count, views <c>AddRef</c> on construction and
+ <c>Release</c> on disposal or finalization, and a finalizer on the block frees it as a
+ backstop.
+ </para>
+ <para>
+ <b>Disposing a native-backed array that still has live views is a use-after-free.</b> The
+ reference count exists to make that survivable, but an explicit <c>Dispose</c> on the last
+ owner while a view is alive will free memory the view still points at. Set
+ <see cref="P:YANum.Core.Config.CheckAliasing"/> to have the block assert its count is 1
+ before freeing.
+ </para>
+ </remarks>
+</member>
+<member name="F:YANum.Core.StorageKind.PinnedHandle">
+<summary>
+ A caller&apos;s array pinned with a GCHandle for zero-copy wrapping. The handle must be freed.
+</summary>
+</member>
+<member name="F:YANum.Core.StorageKind.NativeAligned">
+<summary>
+ NativeMemory.AlignedAlloc. Must be freed exactly once.
+</summary>
+</member>
+<member name="F:YANum.Core.StorageKind.PinnedArray">
+<summary>
+ A pinned-object-heap byte array. Nothing to free; the GC owns the lifetime.
+</summary>
+</member>
+<member name="T:YANum.Core.StorageKind">
+<summary>
+ How a &lt;see cref=&quot;T:YANum.Core.Storage&quot;/&gt; block was obtained, and therefore how it is released.
+</summary>
+</member>
+<member name="F:YANum.Core.ArrayDesc.Flags">
+ <summary>Cached layout facts.</summary>
+</member>
+<member name="F:YANum.Core.ArrayDesc.Rank">
+ <summary>Number of axes, from 0 to 16.</summary>
+</member>
+<member name="F:YANum.Core.ArrayDesc.DType">
+ <summary>The element dtype.</summary>
+</member>
+<member name="F:YANum.Core.ArrayDesc.Size">
+ <summary>Total element count: the product of the extents.</summary>
+</member>
+<member name="F:YANum.Core.ArrayDesc.Offset">
+ <summary>Distance from the start of the storage block to element zero, <b>in elements</b>.</summary>
+</member>
+<member name="F:YANum.Core.ArrayDesc.Strides">
+ <summary>Strides per axis, <b>in elements</b>. May be negative or zero.</summary>
+</member>
+<member name="F:YANum.Core.ArrayDesc.Shape">
+ <summary>Extents per axis. Only the first <see cref="F:YANum.Core.ArrayDesc.Rank"/> entries are meaningful.</summary>
+</member>
+<member name="T:YANum.Core.ArrayDesc">
+ <summary>
+ Everything about an array except its bytes: extents, strides, rank, offset, size, dtype and
+ cached layout flags.
+ </summary>
+ <remarks>
+ <para>
+ <b>224 bytes. Never passed by value.</b> Every internal API takes it as <c>inref</c> and
+ returns through <c>outref</c> or a field write. Phase 0 measured about 68 ns by value
+ against about 22 ns by <c>inref</c> on the hottest internal call shape in the library.
+ </para>
+ <para>
+ The field <i>declaration order</i> below differs from the specification's listing: F#
+ structs use sequential layout, and declaring <c>Rank</c> before <c>Offset</c> costs four
+ bytes of padding plus four bytes of tail padding, which lands the struct at 232 bytes.
+ Moving the two <c>int</c> fields to the end packs it to exactly the mandated 224.
+ </para>
+ </remarks>
+</member>
+<member name="F:YANum.Core.ArrayFlags.Aligned">
+ <summary>The first element's address is a multiple of the dtype's item size.</summary>
+</member>
+<member name="F:YANum.Core.ArrayFlags.OwnsData">
+ <summary>This array owns its storage rather than viewing someone else's.</summary>
+</member>
+<member name="F:YANum.Core.ArrayFlags.Writable">
+ <summary>Elements may be written.</summary>
+</member>
+<member name="F:YANum.Core.ArrayFlags.FContiguous">
+ <summary>The elements are laid out column-major with no gaps.</summary>
+</member>
+<member name="F:YANum.Core.ArrayFlags.CContiguous">
+ <summary>The elements are laid out row-major with no gaps.</summary>
+</member>
+<member name="F:YANum.Core.ArrayFlags.None">
+ <summary>No flags set.</summary>
+</member>
+<member name="T:YANum.Core.ArrayFlags">
+ <summary>Cached facts about an array's layout, computed once at construction.</summary>
+</member>
+<member name="F:YANum.Core.StrideBuf.e0">
+ <summary>
+ The first stride, and the anchor the other fifteen are addressed from.
+ <c>[&lt;InlineArray&gt;]</c> requires exactly one field, so this is the whole storage.
+ Prefer the <c>Item</c> indexer.
+ </summary>
+</member>
+<member name="P:YANum.Core.StrideBuf.Item(System.Int32,System.IntPtr)">
+ <summary>Reads or writes one stride, in elements.</summary>
+ <param name="i">Element index in <c>0 .. 15</c>. Not bounds checked.</param>
+ <param name="v">The stride to store, in elements.</param>
+ <returns>The stride at <paramref name="i"/>.</returns>
+</member>
+<member name="P:YANum.Core.StrideBuf.Item(System.Int32)">
+ <summary>Reads or writes one stride, in elements.</summary>
+ <param name="i">Element index in <c>0 .. 15</c>. Not bounds checked.</param>
+ <param name="v">The stride to store, in elements.</param>
+ <returns>The stride at <paramref name="i"/>.</returns>
+</member>
+<member name="T:YANum.Core.StrideBuf">
+ <summary>Sixteen <c>nativeint</c> strides held inline, with no heap object.</summary>
+ <remarks>
+ <para><b>Both <c>[&lt;Struct&gt;]</c> and <c>[&lt;InlineArray&gt;]</c> are mandatory.</b></para>
+ <para>The element type is <c>nativeint</c>, not <c>int32</c>, on correctness grounds: the
+ outermost stride equals the product of the inner extents, so an array above 2^31 elements
+ has a stride beyond <c>Int32.MaxValue</c>. Narrowing would silently re-impose the 2 GiB cap
+ that the native storage backend exists to lift.</para>
+ </remarks>
+</member>
+<member name="F:YANum.Core.ShapeBuf.e0">
+ <summary>
+ The first extent, and the anchor the other fifteen are addressed from.
+ <c>[&lt;InlineArray&gt;]</c> requires exactly one field, so this is the whole storage.
+ Prefer the <c>Item</c> indexer.
+ </summary>
+</member>
+<member name="P:YANum.Core.ShapeBuf.Item(System.Int32,System.Int32)">
+ <summary>Reads or writes one extent. F# has no native inline-array indexer syntax.</summary>
+ <param name="i">Element index in <c>0 .. 15</c>. Not bounds checked.</param>
+ <param name="v">The extent to store.</param>
+ <returns>The extent at <paramref name="i"/>.</returns>
+</member>
+<member name="P:YANum.Core.ShapeBuf.Item(System.Int32)">
+ <summary>Reads or writes one extent. F# has no native inline-array indexer syntax.</summary>
+ <param name="i">Element index in <c>0 .. 15</c>. Not bounds checked.</param>
+ <param name="v">The extent to store.</param>
+ <returns>The extent at <paramref name="i"/>.</returns>
+</member>
+<member name="T:YANum.Core.ShapeBuf">
+ <summary>Sixteen <c>int</c> extents held inline, with no heap object.</summary>
+ <remarks>
+ <b>Both <c>[&lt;Struct&gt;]</c> and <c>[&lt;InlineArray&gt;]</c> are mandatory.</b> Omitting
+ <c>[&lt;Struct&gt;]</c> compiles, runs, appears to work, and writes 64 bytes into an 8-byte
+ object with no warning and no fault. Phase 0 hit this for real, which is why
+ <see cref="M:YANum.Core.Layout.verify"/> asserts the size at module initialisation.
+ </remarks>
+</member>
+<member name="P:YANum.Core.NDArray.T">
+ <summary>A view with the axis order reversed. O(1); shares storage.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.StridesBytes">
+ <summary>The strides in bytes: the element strides times the item size.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.Strides">
+ <summary>The strides, <b>in elements</b>, materialised on demand.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.Storage">
+ <summary>The underlying storage block. Internal detail exposed for interop and tests.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.Size">
+ <summary>The total number of elements.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.Shape">
+ <summary>The extents, materialised on demand.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.RootBase">
+ <summary>The array at the end of the view chain: the one that actually owns the storage.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.Rank">
+ <summary>The number of axes, from 0 to 16.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.OwnsData">
+ <summary>Whether this array owns its storage rather than viewing someone else's.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.Offset">
+ <summary>Distance from the start of the storage block to element zero, in elements.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.NBytes">
+ <summary>The total number of bytes the elements occupy, ignoring gaps.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.ItemSize">
+ <summary>The size of one element in bytes.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.IsWritable">
+ <summary>Whether elements may be written.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.IsFContiguous">
+ <summary>Whether the elements are laid out column-major with no gaps.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.IsCContiguous">
+ <summary>Whether the elements are laid out row-major with no gaps.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.IsAligned">
+ <summary>Whether the first element's address is a multiple of the item size.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.Flags">
+ <summary>The cached layout facts, computed at construction.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.DisplayText">
+ <summary>Backs <c>%A</c> formatting through <c>StructuredFormatDisplay</c>.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.DType">
+ <summary>The element dtype.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.Base">
+ <summary>The array this one is a view of, or <c>null</c> when it owns its data.</summary>
+</member>
+<member name="P:YANum.Core.NDArray.Backend">
+ <summary>Which allocator backs the elements.</summary>
+</member>
+<member name="M:YANum.Core.NDArray.View(YANum.Core.NDArray,YANum.Core.ArrayDesc@)">
+<summary>
+ Builds a view of `src` from a descriptor derived from it.
+</summary>
+</member>
+<member name="M:YANum.Core.NDArray.Transpose">
+ <summary>A view with the axis order reversed. O(1); shares storage.</summary>
+ <returns>The transposed view.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.ToStringArray">
+ <summary>Copies every string element into a fresh array, in C order.</summary>
+ <returns>A new array of <c>Size</c> strings, padding removed.</returns>
+ <exception cref="T:YANum.Core.YANumTypeError">The array does not have a string dtype.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.ToString">
+ <summary>A repr header naming shape and dtype, followed by the values.</summary>
+ <returns>The rendered array.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.ToArray2D``1">
+ <summary>Copies a rank-2 array into a fresh two-dimensional .NET array.</summary>
+ <returns>A new <c>'T[,]</c> with the same extents.</returns>
+ <exception cref="T:YANum.Core.YANumShapeError">The array is not rank 2.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.ToArray``1">
+ <summary>Copies every element into a fresh one-dimensional array, in C order.</summary>
+ <returns>A new array of <c>Size</c> elements.</returns>
+ <exception cref="T:YANum.Core.YANumTypeError">The element type does not match the array's dtype.</exception>
+ <exception cref="T:YANum.Core.YANumValueError">The array has more than <c>Int32.MaxValue</c> elements.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.SwapAxes(System.Int32,System.Int32)">
+ <summary>A view with two axes exchanged. O(1); shares storage.</summary>
+ <param name="axis1">First axis; negative values count from the end.</param>
+ <param name="axis2">Second axis; negative values count from the end.</param>
+ <returns>The swapped view.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.Squeeze(System.Int32[])">
+ <summary>A view with the named length-1 axes removed. O(1); shares storage.</summary>
+ <param name="axes">Axes to drop; each must have extent 1. Negative values count from the end.</param>
+ <returns>The squeezed view.</returns>
+ <exception cref="T:YANum.Core.YANumShapeError">An axis does not have extent 1.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.Squeeze">
+ <summary>A view with every length-1 axis removed. O(1); shares storage.</summary>
+ <returns>The squeezed view.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.SpanOf(System.Int32[])">
+ <summary>A read-only span over one <c>utf16&lt;n&gt;</c> element, padding included.</summary>
+ <param name="idx">One index per axis; negative values count from the end.</param>
+ <returns>A span of exactly <c>Width</c> UTF-16 code units.</returns>
+ <exception cref="T:YANum.Core.YANumTypeError">The array's dtype is not <c>utf16&lt;n&gt;</c>.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.SetString(System.Int32[],System.String)">
+ <summary>
+ Writes one fixed-width string element, NUL-padding the remainder of the slot.
+ </summary>
+ <param name="idx">One index per axis; negative values count from the end.</param>
+ <param name="value">The value to store; <c>null</c> stores the empty string.</param>
+ <exception cref="T:YANum.Core.YANumOverflowError">
+ The value is longer than the dtype width and
+ <see cref="P:YANum.Core.Config.StringOverflow"/> is <c>Throw</c>.
+ </exception>
+ <exception cref="T:YANum.Core.YANumTypeError">The array does not have a string dtype.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.SetItem``1(System.Int32[],``0)">
+ <summary>Writes one element.</summary>
+ <param name="idx">One index per axis; negative values count from the end.</param>
+ <param name="value">The value to store.</param>
+ <exception cref="T:YANum.Core.YANumTypeError">The element type does not match the array's dtype.</exception>
+ <exception cref="T:YANum.Core.YANumValueError">The array is read-only.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.ReshapeCore(System.Int32[],YANum.Core.Order)">
+ <summary>
+ A reshaped array, as a view when the layout allows and a fresh copy otherwise.
+ </summary>
+ <param name="newShape">The requested extents. Exactly one entry may be <c>-1</c>, which is inferred.</param>
+ <param name="order">Reading order for the reshape; defaults to <see cref="P:YANum.Core.Config.DefaultOrder"/>.</param>
+ <returns>The reshaped array.</returns>
+ <remarks>
+ <b>Whether you get a view or a copy is observable</b>: check <c>OwnsData</c>, or
+ <c>Base</c>, on the result. A view is returned exactly when
+ <see cref="M:YANum.Core.Shape.canReshape"/> allows one — that is, when the source is
+ contiguous in the requested order. Everything else is served by a contiguous copy.
+ </remarks>
+ <exception cref="T:YANum.Core.YANumShapeError">The requested shape has a different total size, or more than one <c>-1</c>.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.Reshape(System.Int32[],YANum.Core.Order)">
+ <summary>A reshaped array using an explicit order.</summary>
+ <param name="newShape">The requested extents. Exactly one entry may be <c>-1</c>.</param>
+ <param name="order">Reading order for the reshape.</param>
+ <returns>The reshaped array — a view when possible, a copy otherwise.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.Reshape(System.Int32[])">
+ <summary>A reshaped array using <see cref="P:YANum.Core.Config.DefaultOrder"/>.</summary>
+ <param name="newShape">The requested extents. Exactly one entry may be <c>-1</c>.</param>
+ <returns>The reshaped array — a view when possible, a copy otherwise.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.Ravel">
+ <summary>A rank-1 array of every element, as a view when possible.</summary>
+ <returns>The flattened array.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.Ravel(YANum.Core.Order)">
+ <summary>A rank-1 array of every element, as a view when possible.</summary>
+ <param name="order">Reading order; defaults to <see cref="P:YANum.Core.Config.DefaultOrder"/>.</param>
+ <returns>The flattened array.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.Permute(System.Int32[])">
+ <summary>A view with the axes reordered by an explicit permutation. O(1); shares storage.</summary>
+ <param name="axes">A permutation of <c>0 .. rank-1</c>; negative entries count from the end.</param>
+ <returns>The permuted view.</returns>
+ <exception cref="T:YANum.Core.YANumShapeError">The argument is not a permutation of the axes.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.MoveAxis(System.Int32,System.Int32)">
+ <summary>A view with one axis moved to a new position. O(1); shares storage.</summary>
+ <param name="source">Axis to move; negative values count from the end.</param>
+ <param name="destination">Position it should end up at; negative values count from the end.</param>
+ <returns>The reordered view.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.GetString(System.Int32[])">
+ <summary>Reads one fixed-width string element, without its NUL padding.</summary>
+ <param name="idx">One index per axis; negative values count from the end.</param>
+ <returns>The stored value.</returns>
+ <exception cref="T:YANum.Core.YANumTypeError">The array does not have a string dtype.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.GetItem``1(System.Int32[])">
+ <summary>Reads one element.</summary>
+ <param name="idx">One index per axis; negative values count from the end.</param>
+ <returns>The element.</returns>
+ <exception cref="T:YANum.Core.YANumTypeError">The element type does not match the array's dtype.</exception>
+ <exception cref="T:YANum.Core.YANumShapeError">The wrong number of indices was supplied.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.GetHashCode">
+ <summary>Hashes the shape and dtype only.</summary>
+ <returns>The hash code.</returns>
+ <remarks>
+ <b>Collisions are expected and frequent</b>: every <c>float64</c> array of shape
+ <c>[1000]</c> hashes identically. Hashing the contents would be O(n) and is not a
+ sensible default for a numerical array. Do not use arrays as dictionary keys on a hot
+ path.
+ </remarks>
+</member>
+<member name="M:YANum.Core.NDArray.ExpandDims(System.Int32)">
+ <summary>A view with a length-1 axis inserted. O(1); shares storage.</summary>
+ <param name="axis">Insertion position in <c>-rank-1 .. rank</c>.</param>
+ <returns>The expanded view.</returns>
+ <exception cref="T:YANum.Core.YANumShapeError">The result would exceed rank 16, or the axis is out of range.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.Equals(System.Object)">
+ <summary><c>array_equal</c> semantics against a boxed value.</summary>
+ <param name="o">The value to compare against.</param>
+ <returns><c>true</c> when <paramref name="o"/> is an <see cref="T:YANum.Core.NDArray"/> that compares equal.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.Dispose">
+ <summary>
+ Drops this array's reference to its storage.
+ </summary>
+ <remarks>
+ A no-op for the managed backend, where the GC owns the lifetime. For the native backend
+ this drops one reference count; the block is freed when the last one goes.
+ <b>Disposing the owner of a native-backed array while views are alive is a
+ use-after-free</b> once the count reaches zero. Set
+ <see cref="P:YANum.Core.Config.CheckAliasing"/> to have that asserted.
+ </remarks>
+</member>
+<member name="M:YANum.Core.NDArray.Copy">
+ <summary>A dense copy in <see cref="P:YANum.Core.Config.DefaultOrder"/>.</summary>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.Copy(YANum.Core.Order)">
+ <summary>A dense copy of the elements in the requested order.</summary>
+ <param name="order">Target layout; <c>K</c> keeps an F-contiguous source in F order and everything else in C order.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.Build(YANum.Core.Storage,YANum.Core.ArrayDesc@,YANum.Core.NDArray)">
+<summary>
+ Builds an array, refreshing the cached flags and taking a storage reference for views.
+</summary>
+</member>
+<member name="M:YANum.Core.NDArray.AsSpan``1">
+ <summary>A span aliasing the elements. Contiguous arrays only.</summary>
+ <returns>A span over the elements in memory order.</returns>
+ <exception cref="T:YANum.Core.YANumShapeError">The array is not contiguous.</exception>
+ <exception cref="T:YANum.Core.YANumTypeError">The element type does not match the array's dtype.</exception>
+</member>
+<member name="M:YANum.Core.NDArray.AsFortran">
+ <summary>This array if it is already F-contiguous, otherwise an F-contiguous copy.</summary>
+ <returns>An F-contiguous array with the same shape, dtype and values.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.AsContiguous">
+ <summary>This array if it is already C-contiguous, otherwise a C-contiguous copy.</summary>
+ <returns>A C-contiguous array with the same shape, dtype and values.</returns>
+</member>
+<member name="M:YANum.Core.NDArray.ArrayEqual(YANum.Core.NDArray)">
+ <summary>
+ <c>array_equal</c> semantics: same dtype, same shape, every element equal.
+ </summary>
+ <param name="other">The array to compare against.</param>
+ <returns><c>true</c> when the two arrays are element-wise identical.</returns>
+ <remarks>
+ Comparison uses the dtype's real element equality, not <c>memcmp</c>, except where
+ <see cref="P:YANum.Core.DType.MemcmpLegal"/> is set and both layouts are densely packed.
+ So two <c>NaN</c> arrays are <b>not</b> equal, while <c>-0.0</c> and <c>+0.0</c> arrays
+ <b>are</b>, and <c>1.0m</c> equals <c>1.00m</c>.
+ </remarks>
+</member>
+<member name="M:YANum.Core.NDArray.AddressOf(System.Int32[],System.String)">
+ <summary>The byte address of one element. Used by interop and by the string accessors.</summary>
+ <param name="idx">One index per axis; negative values count from the end.</param>
+ <param name="op">Operation name for error messages.</param>
+ <returns>The absolute address of the element.</returns>
+</member>
+<member name="T:YANum.Core.NDArray">
+ <summary>
+ An n-dimensional, strided, dtype-tagged array.
+ </summary>
+ <remarks>
+ <para>
+ <b><c>=</c> on two arrays means <c>array_equal</c>, not NumPy's element-wise <c>==</c>.</b>
+ It returns a <c>bool</c>: same dtype, same shape, all elements equal. Element-wise equality
+ is the <c>.=</c> operator, which arrives in Phase 4 and returns a <c>Bool</c> array.
+ </para>
+ <para>
+ <b>Grammar rules for the operator surface</b> (Phases 3 and 4 introduce the operators; the
+ rules are stated here because they are properties of F#'s fixed precedence table):
+ mixed <c>&amp;&amp;&amp;</c>/<c>|||</c> chains require parentheses, because F# gives the
+ bitwise operators and the dot-comparisons one left-associative precedence level; and a
+ comparison whose operand is itself a comparison requires parentheses. Both are satisfied by
+ the habit NumPy already teaches — parenthesise every comparison.
+ </para>
+ <para>
+ All <c>Bool</c> arrays YANum produces contain only 0 or 1; every ingest path that
+ reinterprets foreign bytes normalises them.
+ </para>
+ </remarks>
+</member>
+<member name="M:YANum.Core.Errors.formatShape(System.Int32[])">
+ <summary>Formats a shape as NumPy does, e.g. <c>(3,4)</c> or <c>()</c> for rank 0.</summary>
+ <param name="shape">The extents.</param>
+ <returns>A parenthesised, comma-separated rendering.</returns>
+</member>
+<member name="M:YANum.Core.Errors.indexOutOfRange``1(System.String,System.Int32,System.Int32,System.Int32)">
+ <summary>Raises an index-out-of-range failure describing the offending axis.</summary>
+ <param name="op">Operation name.</param>
+ <param name="axis">Axis whose index was out of range.</param>
+ <param name="index">The offending index, after negative-index normalisation.</param>
+ <param name="extent">The extent of that axis.</param>
+ <returns>Never returns.</returns>
+</member>
+<member name="M:YANum.Core.Errors.valueError``1(System.String)">
+ <summary>Raises a <see cref="T:YANum.Core.YANumValueError"/>.</summary>
+ <param name="msg">Message naming the argument and the constraint it broke.</param>
+ <returns>Never returns.</returns>
+</member>
+<member name="M:YANum.Core.Errors.overflowError``1(System.String)">
+ <summary>Raises a <see cref="T:YANum.Core.YANumOverflowError"/>.</summary>
+ <param name="msg">Message naming the value and its destination.</param>
+ <returns>Never returns.</returns>
+</member>
+<member name="M:YANum.Core.Errors.shapeError``1(System.String)">
+ <summary>Raises a <see cref="T:YANum.Core.YANumShapeError"/>.</summary>
+ <param name="msg">Message naming the operation and the shapes involved.</param>
+ <returns>Never returns.</returns>
+</member>
+<member name="M:YANum.Core.Errors.typeError``1(System.String)">
+ <summary>Raises a <see cref="T:YANum.Core.YANumTypeError"/>.</summary>
+ <param name="msg">Message naming the operation and the dtypes involved.</param>
+ <returns>Never returns.</returns>
+</member>
+<member name="M:YANum.Core.Errors.general``1(System.String)">
+ <summary>Raises a general <see cref="T:YANum.Core.YANumException"/>.</summary>
+ <param name="msg">Message naming the operation.</param>
+ <returns>Never returns.</returns>
+</member>
+<member name="T:YANum.Core.Errors">
+ <summary>
+ Throw helpers. Every helper is <c>NoInlining</c> so that a call site keeps only a
+ call instruction on the happy path and the exception construction stays out of line.
+ </summary>
+ <remarks>
+ Error messages must name the operation and the dtypes or shapes involved, e.g.
+ <c>"shapes (3,4) and (5,4) are not broadcast-compatible on axis 0"</c>.
+ </remarks>
+</member>
+<member name="M:YANum.Core.Complex32Layout.verify">
+ <summary>Throws if the runtime layout of <see cref="T:YANum.Core.Complex32"/> is not 8 bytes.</summary>
+</member>
+<member name="P:YANum.Core.Complex32Layout.ExpectedSize">
+ <summary>The required size of <see cref="T:YANum.Core.Complex32"/> in bytes.</summary>
+</member>
+<member name="T:YANum.Core.Complex32Layout">
+ <summary>Layout assertions for <see cref="T:YANum.Core.Complex32"/>.</summary>
+ <remarks>
+ The authoritative fail-fast check for the whole library lives in <c>ArrayDesc.fs</c>;
+ this one exists so that a build of <c>Complex32.fs</c> alone still self-checks.
+ </remarks>
+</member>
+<member name="M:YANum.Core.DTypeTable.resolve(System.Type)">
+ <summary>Maps a CLR element type to its dtype.</summary>
+ <param name="t">The CLR type.</param>
+ <returns>The corresponding dtype.</returns>
+ <exception cref="T:YANum.Core.YANumTypeError">The type has no dtype.</exception>
+</member>
+<member name="T:YANum.Core.DTypeTable">
+ <summary>Reflection-based resolution from a CLR type to its dtype. Call sites cache the result.</summary>
+</member>
+<member name="P:YANum.Core.DTypeCodeModule.all">
+ <summary>Every dtype code, in declaration order.</summary>
+</member>
+<member name="P:YANum.Core.DTypeCodeModule.Count">
+ <summary>The number of dtype codes. Sizes every flat kernel table.</summary>
+</member>
+<member name="T:YANum.Core.DTypeCodeModule">
+ <summary>Constants over <see cref="T:YANum.Core.DTypeCode"/>.</summary>
+</member>
+<member name="P:YANum.Core.DTypeTables.memcmpLegal">
+<summary>
+ Phase 0 spike 0.9: byte comparison agrees with value equality only for these.
+</summary>
+</member>
+<member name="P:YANum.Core.DTypeTables.alignment">
+<summary>
+ Preferred alignment of one element, in bytes.
+</summary>
+</member>
+<member name="P:YANum.Core.DTypeTables.itemSize">
+<summary>
+ Byte size of one element; 0 for the two width-parameterised string dtypes.
+</summary>
+</member>
+<member name="T:YANum.Core.DTypeTables">
+ <summary>Flat metadata tables indexed by <see cref="T:YANum.Core.DTypeCode"/>.</summary>
+</member>
+<member name="M:YANum.Core.Promotion.canPromote(YANum.Core.DType,YANum.Core.DType)">
+ <summary>Whether two dtypes have a common dtype under the current configuration.</summary>
+ <param name="a">First dtype.</param>
+ <param name="b">Second dtype.</param>
+ <returns><c>true</c> when <see cref="M:YANum.Core.Promotion.promote"/> would succeed.</returns>
+</member>
+<member name="M:YANum.Core.Promotion.promote(YANum.Core.DType,YANum.Core.DType)">
+ <summary>
+ The common dtype of two dtypes.
+ </summary>
+ <param name="a">First dtype.</param>
+ <param name="b">Second dtype.</param>
+ <returns>The dtype both operands promote to.</returns>
+ <exception cref="T:YANum.Core.YANumTypeError">
+ The pair has no common dtype — a string against a non-string, a temporal dtype against
+ anything else, <c>Decimal</c> against a float, complex or 128-bit integer, or, under
+ <see cref="P:YANum.Core.Config.StrictIntegerPromotion"/>, a signed/unsigned pair with no
+ exact signed result.
+ </exception>
+</member>
+<member name="M:YANum.Core.Promotion.tryPromote(YANum.Core.DType,YANum.Core.DType)">
+ <summary>
+ Attempts the promotion, returning <c>ValueNone</c> where the lattice has no answer.
+ </summary>
+ <param name="a">First dtype.</param>
+ <param name="b">Second dtype.</param>
+ <returns>The common dtype, or <c>ValueNone</c> when the pair cannot be promoted.</returns>
+</member>
+<member name="M:YANum.Core.Promotion.compute(YANum.Core.DTypeCode,YANum.Core.DTypeCode,System.Boolean)">
+<summary>
+ Core rule engine. Returns the resulting dtype code as an int, or -1 for &quot;no promotion&quot;.
+</summary>
+</member>
+<member name="M:YANum.Core.Promotion.floatForIntBits(System.Int32)">
+<summary>
+ Smallest float whose mantissa covers `bits` value bits, capped at Float64 (rule P7).
+</summary>
+</member>
+<member name="M:YANum.Core.Promotion.liftToComplex(YANum.Core.DTypeCode)">
+<summary>
+ The complex dtype whose components are at least the given float dtype.
+</summary>
+</member>
+<member name="M:YANum.Core.Promotion.componentOf(YANum.Core.DTypeCode)">
+<summary>
+ The float component type of a complex dtype.
+</summary>
+</member>
+<member name="M:YANum.Core.Promotion.p6Allows(YANum.Core.DTypeCode,System.Int32)">
+<summary>
+ P6 admits `Int128` as a result only when the signed operand is already `Int128`; it is
+ never used to widen out of a 64-bit unsigned. Without this the lattice loses information
+ gratuitously (`Int128` against `UInt8` would fall all the way to `Float64`) and breaks
+ associativity on triples that never mention a float.
+</summary>
+</member>
+<member name="P:YANum.Core.Promotion.signedLadder">
+<summary>
+ The result ladder for rule P6.
+
+ `Int128` is present but is never reached by *escalation*: see `p6Allows` below. YANum
+ matches NumPy by refusing to promote a 64-bit unsigned into a 128-bit signed integer,
+ because `Int128` has neither SIMD nor hardware arithmetic and the choice is viral
+ through the rest of the pipeline. `UInt64` and `UInt128` against a signed integer of at
+ most 64 bits therefore fall back to `Float64`, or raise under strict integer promotion.
+</summary>
+</member>
+<member name="T:YANum.Core.Promotion">
+ <summary>
+ The common-type lattice: given two dtypes, the single dtype both can be represented in.
+ </summary>
+ <remarks>
+ <para>
+ This is <b>not</b> the same question as "what dtype does this ufunc return"; that is
+ <c>Signature.resolve</c>, which arrives in Phase 3. In particular string concatenation
+ (<c>Utf16 a</c> + <c>Utf16 b</c> giving <c>Utf16 (a+b)</c>) is a ufunc-specific result
+ type. <c>promote</c> returns <c>Utf16 (max a b)</c>, which is the right answer for
+ comparison and copy.
+ </para>
+ <para>
+ The non-string part of the lattice is memoised in two flat 25x25 tables indexed by
+ <see cref="T:YANum.Core.DTypeCode"/> — one for the default integer rule and one for
+ <see cref="P:YANum.Core.Config.StrictIntegerPromotion"/>. String widths are handled by a
+ small special case outside the tables.
+ </para>
+ </remarks>
+</member>
+<member name="M:YANum.Core.Shape.validate(System.Int32[])">
+ <summary>Validates a shape.</summary>
+ <param name="shape">The extents.</param>
+ <exception cref="T:YANum.Core.YANumShapeError">The shape is null, exceeds rank 16, or has a negative extent.</exception>
+</member>
+<member name="M:YANum.Core.Shape.normalizeAxis(System.Int32,System.Int32)">
+ <summary>Turns a possibly-negative axis into a non-negative one.</summary>
+ <param name="rank">The rank the axis indexes into.</param>
+ <param name="axis">The axis; negative values count from the end.</param>
+ <returns>The axis in <c>0 .. rank-1</c>.</returns>
+ <exception cref="T:YANum.Core.YANumShapeError">The axis is out of range for the rank.</exception>
+</member>
+<member name="M:YANum.Core.Shape.canReshape(System.Int32[],System.IntPtr[],System.Int32[],YANum.Core.Order)">
+ <summary>
+ Whether a reshape can be served as a view rather than a copy.
+ </summary>
+ <param name="shape">Current extents.</param>
+ <param name="strides">Current strides, in elements.</param>
+ <param name="newShape">Requested extents; must have the same total size.</param>
+ <param name="order">The reading order the reshape should follow.</param>
+ <returns><c>true</c> when a stride-only view exists.</returns>
+ <remarks>
+ Conservative but never wrong: a <c>true</c> result guarantees a view exists. Some
+ non-contiguous layouts admit a view for particular target shapes; those are reported
+ as <c>false</c> and served by a copy.
+ </remarks>
+</member>
+<member name="M:YANum.Core.Shape.equal(System.Int32[],System.Int32[])">
+ <summary>Whether two shapes are equal.</summary>
+ <param name="a">First shape.</param>
+ <param name="b">Second shape.</param>
+ <returns><c>true</c> when the ranks and every extent match.</returns>
+</member>
+<member name="M:YANum.Core.Shape.isFContiguous(System.Int32[],System.IntPtr[])">
+ <summary>Whether the strides describe a column-major contiguous layout.</summary>
+ <param name="shape">The extents.</param>
+ <param name="strides">Strides in elements.</param>
+ <returns><c>true</c> when the layout is F-contiguous.</returns>
+</member>
+<member name="M:YANum.Core.Shape.isCContiguous(System.Int32[],System.IntPtr[])">
+ <summary>Whether the strides describe a row-major contiguous layout.</summary>
+ <param name="shape">The extents.</param>
+ <param name="strides">Strides in elements.</param>
+ <returns><c>true</c> when the layout is C-contiguous.</returns>
+</member>
+<member name="M:YANum.Core.Shape.stridesFor(YANum.Core.Order,System.Int32[])">
+ <summary>Strides for the given order. <c>K</c> is treated as <c>C</c>.</summary>
+ <param name="order">The layout order.</param>
+ <param name="shape">The extents.</param>
+ <returns>A fresh stride array.</returns>
+</member>
+<member name="M:YANum.Core.Shape.fStrides(System.Int32[])">
+ <summary>Column-major strides, in elements: the first axis varies fastest.</summary>
+ <param name="shape">The extents.</param>
+ <returns>A fresh stride array.</returns>
+</member>
+<member name="M:YANum.Core.Shape.cStrides(System.Int32[])">
+ <summary>Row-major strides, in elements: the last axis varies fastest.</summary>
+ <param name="shape">The extents.</param>
+ <returns>A fresh stride array.</returns>
+</member>
+<member name="M:YANum.Core.Shape.writeFStrides(System.Int32[],System.Span{System.IntPtr})">
+ <summary>Writes column-major strides, in elements, into a caller-provided buffer.</summary>
+ <param name="shape">The extents.</param>
+ <param name="dst">Destination of at least <c>shape.Length</c> entries.</param>
+</member>
+<member name="M:YANum.Core.Shape.writeCStrides(System.Int32[],System.Span{System.IntPtr})">
+ <summary>Writes row-major strides, in elements, into a caller-provided buffer.</summary>
+ <param name="shape">The extents.</param>
+ <param name="dst">Destination of at least <c>shape.Length</c> entries.</param>
+</member>
+<member name="M:YANum.Core.Shape.size(System.Int32[])">
+ <summary>The number of elements a shape describes; 0 if any extent is 0, 1 for rank 0.</summary>
+ <param name="shape">The extents.</param>
+ <returns>The product of the extents.</returns>
+</member>
+<member name="P:YANum.Core.Shape.MaxRank">
+ <summary>The maximum rank YANum supports. Fixed by the inline buffers in the descriptor.</summary>
+</member>
+<member name="T:YANum.Core.Shape">
+ <summary>
+ Pure functions on shapes and strides. Dtype-agnostic, and allocation-free in every helper
+ that does not have to return a new array.
+ </summary>
+ <remarks>
+ <para><b>Strides are in elements, not bytes.</b> Byte strides are derived by multiplying by
+ <see cref="P:YANum.Core.DType.ItemSize"/>.</para>
+ <para>An array of size 0 or 1 — including rank 0, and any shape with a zero extent — is
+ <b>both</b> C- and F-contiguous. An axis of extent 1 imposes no constraint on contiguity
+ and its stride is arbitrary.</para>
+ </remarks>
+</member>
+<member name="M:YANum.Core.Desc.reshapeInto(YANum.Core.ArrayDesc@,System.Int32[],YANum.Core.Order,YANum.Core.ArrayDesc@)">
+ <summary>Builds a reshaped view descriptor. The caller must have confirmed a view is possible.</summary>
+ <param name="src">Source descriptor.</param>
+ <param name="newShape">Requested extents; the total size must match.</param>
+ <param name="order">Reading order of the reshape.</param>
+ <param name="dst">Destination descriptor.</param>
+</member>
+<member name="M:YANum.Core.Desc.squeezeInto(YANum.Core.ArrayDesc@,System.Int32[],YANum.Core.ArrayDesc@)">
+ <summary>Removes length-1 axes.</summary>
+ <param name="src">Source descriptor.</param>
+ <param name="axes">Axes to drop, already normalised and each of extent 1; null drops every length-1 axis.</param>
+ <param name="dst">Destination descriptor.</param>
+</member>
+<member name="M:YANum.Core.Desc.expandDimsInto(YANum.Core.ArrayDesc@,System.Int32,YANum.Core.ArrayDesc@)">
+ <summary>Inserts a length-1 axis at the given position.</summary>
+ <param name="src">Source descriptor.</param>
+ <param name="axis">Insertion position in <c>0 .. rank</c>.</param>
+ <param name="dst">Destination descriptor.</param>
+</member>
+<member name="M:YANum.Core.Desc.permuteInto(YANum.Core.ArrayDesc@,System.Int32[],YANum.Core.ArrayDesc@)">
+ <summary>Reorders the axes by an explicit permutation.</summary>
+ <param name="src">Source descriptor.</param>
+ <param name="perm">A permutation of <c>0 .. rank-1</c>, already normalised.</param>
+ <param name="dst">Destination descriptor.</param>
+</member>
+<member name="M:YANum.Core.Desc.transposeInto(YANum.Core.ArrayDesc@,YANum.Core.ArrayDesc@)">
+ <summary>Reverses the axis order, producing a transposed view descriptor.</summary>
+ <param name="src">Source descriptor.</param>
+ <param name="dst">Destination descriptor.</param>
+</member>
+<member name="M:YANum.Core.Desc.offsetOf(YANum.Core.ArrayDesc@,System.Int32[],System.Boolean,System.String)">
+ <summary>Element offset of a multi-dimensional index, in elements from the buffer start.</summary>
+ <param name="d">The descriptor.</param>
+ <param name="idx">One index per axis; negative values count from the end of that axis.</param>
+ <param name="checkBounds">Whether to validate each index against its extent.</param>
+ <param name="op">Operation name, used in error messages.</param>
+ <returns>The element offset.</returns>
+ <exception cref="T:YANum.Core.YANumShapeError">The index has the wrong number of entries.</exception>
+ <exception cref="T:YANum.Core.YANumValueError">An index is out of range and checking is on.</exception>
+</member>
+<member name="M:YANum.Core.Desc.copyTo(YANum.Core.ArrayDesc@,YANum.Core.ArrayDesc@)">
+ <summary>Copies a descriptor without passing it by value.</summary>
+ <param name="src">Source descriptor.</param>
+ <param name="dst">Destination descriptor.</param>
+</member>
+<member name="M:YANum.Core.Desc.initDense(YANum.Core.ArrayDesc@,System.Int32[],YANum.Core.Order,YANum.Core.DType)">
+ <summary>Initialises a descriptor for a freshly allocated, densely packed array.</summary>
+ <param name="d">The descriptor to fill.</param>
+ <param name="shape">Extents; validated by the caller.</param>
+ <param name="order">Layout order; <c>K</c> is treated as <c>C</c>.</param>
+ <param name="dtype">Element dtype.</param>
+</member>
+<member name="M:YANum.Core.Desc.refreshFlags(YANum.Core.ArrayDesc@,System.IntPtr,System.Boolean,System.Boolean)">
+ <summary>Recomputes and stores the cached layout flags.</summary>
+ <param name="d">The descriptor to update in place.</param>
+ <param name="basePtr">Base address of the storage block, used for the alignment flag.</param>
+ <param name="writable">Whether elements may be written.</param>
+ <param name="ownsData">Whether the owning array owns the storage.</param>
+</member>
+<member name="M:YANum.Core.Desc.isFContiguous(YANum.Core.ArrayDesc@)">
+ <summary>Whether the descriptor's layout is column-major contiguous.</summary>
+ <param name="d">The descriptor.</param>
+ <returns><c>true</c> when F-contiguous.</returns>
+</member>
+<member name="M:YANum.Core.Desc.isCContiguous(YANum.Core.ArrayDesc@)">
+ <summary>Whether the descriptor's layout is row-major contiguous.</summary>
+ <param name="d">The descriptor.</param>
+ <returns><c>true</c> when C-contiguous.</returns>
+</member>
+<member name="M:YANum.Core.Desc.stridesArray(YANum.Core.ArrayDesc@)">
+ <summary>Materialises the strides, in elements, as a fresh array.</summary>
+ <param name="d">The descriptor.</param>
+ <returns>A new array of length <c>Rank</c>.</returns>
+</member>
+<member name="M:YANum.Core.Desc.shapeArray(YANum.Core.ArrayDesc@)">
+ <summary>Materialises the extents as a fresh array.</summary>
+ <param name="d">The descriptor.</param>
+ <returns>A new array of length <c>Rank</c>.</returns>
+</member>
+<member name="M:YANum.Core.Desc.stride(YANum.Core.ArrayDesc@,System.Int32)">
+ <summary>Reads one stride, in elements.</summary>
+ <param name="d">The descriptor.</param>
+ <param name="i">Axis index.</param>
+ <returns>The stride of axis <paramref name="i"/>.</returns>
+</member>
+<member name="M:YANum.Core.Desc.extent(YANum.Core.ArrayDesc@,System.Int32)">
+ <summary>Reads one extent.</summary>
+ <param name="d">The descriptor.</param>
+ <param name="i">Axis index.</param>
+ <returns>The extent of axis <paramref name="i"/>.</returns>
+</member>
+<member name="M:YANum.Core.Desc.strideSpan(YANum.Core.ArrayDesc@)">
+ <summary>A writable span over the stride buffer of a descriptor.</summary>
+ <param name="d">The descriptor.</param>
+ <returns>A 16-element span aliasing the descriptor's inline strides, in elements.</returns>
+</member>
+<member name="M:YANum.Core.Desc.shapeSpan(YANum.Core.ArrayDesc@)">
+ <summary>A writable span over the extent buffer of a descriptor.</summary>
+ <param name="d">The descriptor.</param>
+ <returns>A 16-element span aliasing the descriptor's inline extents.</returns>
+</member>
+<member name="T:YANum.Core.Desc">
+ <summary>
+ Descriptor operations. Every one takes the descriptor by <c>inref</c> and writes its result
+ through <c>outref</c>; none of them allocates.
+ </summary>
+</member>
+<member name="M:YANum.Core.Layout.verify">
+ <summary>Verifies every size the descriptor design depends on. Throws on any mismatch.</summary>
+</member>
+<member name="P:YANum.Core.Layout.Complex32Size">
+ <summary>Required size of <see cref="T:YANum.Core.Complex32"/> in bytes.</summary>
+</member>
+<member name="P:YANum.Core.Layout.ArrayDescSize">
+ <summary>Required size of <see cref="T:YANum.Core.ArrayDesc"/> in bytes.</summary>
+</member>
+<member name="P:YANum.Core.Layout.StrideBufSize">
+ <summary>Required size of <see cref="T:YANum.Core.StrideBuf"/> in bytes.</summary>
+</member>
+<member name="P:YANum.Core.Layout.ShapeBufSize">
+ <summary>Required size of <see cref="T:YANum.Core.ShapeBuf"/> in bytes.</summary>
+</member>
+<member name="T:YANum.Core.Layout">
+ <summary>
+ Fail-fast layout assertions. A unit test asserting the same values is required but is not
+ sufficient: a future refactor that drops <c>[&lt;Struct&gt;]</c> from an inline array must
+ fail at process start, not only under test.
+ </summary>
+</member>
+<member name="M:YANum.Core.Printing.render(YANum.Core.Storage,YANum.Core.ArrayDesc@)">
+ <summary>
+ Renders an array as a repr header followed by its values.
+ </summary>
+ <param name="storage">The block holding the elements.</param>
+ <param name="desc">The layout descriptor.</param>
+ <returns>The rendered array.</returns>
+ <remarks>
+ Ranks 0 to 3 get nested bracket layouts. Rank 4 and above get a flat listing under the
+ shape header; per-axis layout for high ranks lands in Phase 5.
+ </remarks>
+</member>
+<member name="M:YANum.Core.Printing.header(System.Int32[],YANum.Core.DType)">
+ <summary>The repr-style header naming shape and dtype.</summary>
+ <param name="shape">The extents.</param>
+ <param name="dtype">The element dtype.</param>
+ <returns>A string of the form <c>NDArray(shape=[2;3], dtype=float64)</c>.</returns>
+</member>
+<member name="M:YANum.Core.Printing.formatElement(YANum.Core.DType,System.IntPtr)">
+ <summary>Renders one element of any dtype.</summary>
+ <param name="dtype">The element dtype.</param>
+ <param name="addr">Address of the element.</param>
+ <returns>The rendered value.</returns>
+</member>
+<member name="M:YANum.Core.Printing.readStringElement(YANum.Core.DType,System.IntPtr)">
+ <summary>Reads the fixed-width string element at an address and trims its null padding.</summary>
+ <param name="dtype">A <c>Utf16</c> or <c>Ascii</c> dtype.</param>
+ <param name="addr">Address of the element.</param>
+ <returns>The stored value, without trailing NULs.</returns>
+</member>
+<member name="T:YANum.Core.Printing">
+ <summary>
+ Basic, NumPy-shaped rendering of an array's contents: enough to debug with.
+ </summary>
+ <remarks>
+ <para>
+ This module deliberately sits below <see cref="T:YANum.Core.NDArray"/> in the compile order
+ and works from a <see cref="T:YANum.Core.Storage"/> plus an
+ <see cref="T:YANum.Core.ArrayDesc"/>, because F# cannot add an <c>override ToString</c> to
+ a type from a later file.
+ </para>
+ <para>
+ Full NumPy summarisation, per-column width alignment and precision handling arrive in
+ Phase 5. What is here is unsummarised except for one safety net: output is truncated after
+ <see cref="P:YANum.Core.Config.PrintThreshold"/> elements with an explicit notice, so that
+ printing a large array cannot produce a gigabyte of text.
+ </para>
+ </remarks>
+</member>
+<member name="M:YANum.Core.Elem.normalizeBools(System.IntPtr,System.IntPtr)">
+<summary>
+ Forces every byte of a Bool buffer to 0 or 1.
+
+ A `bool` byte of 0x02 compares as not-`true` under `=` while `if b` takes the true
+ branch, and it is reachable through YANum&apos;s own MemoryMarshal reinterpretation. Every
+ ingest path that reinterprets foreign bytes as Bool runs this.
+</summary>
+</member>
+<member name="M:YANum.Core.Elem.equalStrided(YANum.Core.DType,System.IntPtr,System.IntPtr,System.IntPtr[],System.IntPtr,System.IntPtr,System.IntPtr[],System.Int32[],System.IntPtr)">
+<summary>
+ Element-wise comparison of two strided layouts that already share dtype and shape.
+</summary>
+</member>
+<member name="M:YANum.Core.Elem.equalsAt(YANum.Core.DType,System.IntPtr,System.IntPtr)">
+<summary>
+ Value equality for one element, using the dtype&apos;s real comparison so that IEEE
+ semantics survive: NaN is unequal to itself and -0.0 equals +0.0.
+</summary>
+</member>
+<member name="M:YANum.Core.Elem.copyStrided(System.IntPtr,System.IntPtr,System.IntPtr[],System.IntPtr,System.IntPtr,System.IntPtr[],System.Int32[],System.IntPtr,System.Int32)">
+<summary>
+ Copies `size` elements of `itemSize` bytes between two strided layouts of the same shape.
+</summary>
+</member>
+<member name="T:YANum.Core.Elem">
+ <summary>Strided element-level primitives shared by copying, comparison and ingest.</summary>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.copy.Static(YANum.Core.NDArray,Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order})">
+ <summary>A dense copy of an array.</summary>
+ <param name="source">The array to copy.</param>
+ <param name="order">Target layout; defaults to <see cref="P:YANum.Core.Config.DefaultOrder"/>.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.fromFunction.Static``1(System.Int32[],System.Func{System.Int32[],``0},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>An array whose elements are computed from their indices.</summary>
+ <param name="shape">The extents.</param>
+ <param name="f">Called once per element with that element's index.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+ <remarks>
+ <b>The index array handed to <paramref name="f"/> is reused across calls</b> so that
+ the loop allocates nothing. Copy it if you need to keep it.
+ </remarks>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.geomspace.Static(System.Double,System.Double,System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>Values evenly spaced on a geometric progression.</summary>
+ <param name="start">First value; must not be zero.</param>
+ <param name="stop">Last value when <paramref name="endpoint"/> is set; must not be zero and must share the sign of <paramref name="start"/>.</param>
+ <param name="num">Number of values.</param>
+ <param name="endpoint">Whether <paramref name="stop"/> is included. Defaults to <c>true</c>.</param>
+ <param name="dtype">Element dtype; defaults to <see cref="P:YANum.Core.Config.DefaultFloat"/>.</param>
+ <param name="order">Layout order; immaterial at rank 1.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A rank-1 array of <paramref name="num"/> values.</returns>
+ <exception cref="T:YANum.Core.YANumValueError">An endpoint is zero, or the endpoints have opposite signs.</exception>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.logspace.Static(System.Double,System.Double,System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>Values evenly spaced on a logarithmic scale.</summary>
+ <param name="start">Exponent of the first value.</param>
+ <param name="stop">Exponent of the last value when <paramref name="endpoint"/> is set.</param>
+ <param name="num">Number of values.</param>
+ <param name="numBase">The base; defaults to 10.</param>
+ <param name="endpoint">Whether <paramref name="stop"/> is included. Defaults to <c>true</c>.</param>
+ <param name="dtype">Element dtype; defaults to <see cref="P:YANum.Core.Config.DefaultFloat"/>.</param>
+ <param name="order">Layout order; immaterial at rank 1.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A rank-1 array of <paramref name="num"/> values.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.linspace.Static(System.Double,System.Double,System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>Evenly spaced values over a closed or half-open interval.</summary>
+ <param name="start">First value.</param>
+ <param name="stop">Last value when <paramref name="endpoint"/> is set, otherwise the exclusive bound.</param>
+ <param name="num">Number of values; must not be negative.</param>
+ <param name="endpoint">Whether <paramref name="stop"/> is included. Defaults to <c>true</c>.</param>
+ <param name="dtype">Element dtype; defaults to <see cref="P:YANum.Core.Config.DefaultFloat"/>.</param>
+ <param name="order">Layout order; immaterial at rank 1.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A rank-1 array of <paramref name="num"/> values.</returns>
+ <remarks>When <paramref name="endpoint"/> is set the last element is exactly <paramref name="stop"/>.</remarks>
+ <exception cref="T:YANum.Core.YANumValueError">The count is negative.</exception>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.arange.Static(System.Double,Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>Evenly spaced values from zero to an exclusive upper bound, in steps of one.</summary>
+ <param name="stop">Exclusive upper bound.</param>
+ <param name="dtype">Element dtype; defaults as for the three-argument form.</param>
+ <param name="order">Layout order; immaterial at rank 1.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A rank-1 array of <c>ceil(stop)</c> values.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.arange.Static(System.Double,System.Double,Microsoft.FSharp.Core.FSharpOption{System.Double},Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>Evenly spaced values over a half-open interval.</summary>
+ <param name="start">First value.</param>
+ <param name="stop">Exclusive upper bound.</param>
+ <param name="step">Spacing; defaults to 1 and must not be 0.</param>
+ <param name="dtype">Element dtype; defaults to <see cref="P:YANum.Core.Config.DefaultInt"/> when every argument is integral, otherwise <see cref="P:YANum.Core.Config.DefaultFloat"/>.</param>
+ <param name="order">Layout order; immaterial at rank 1.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A rank-1 array of <c>ceil((stop - start) / step)</c> values.</returns>
+ <remarks>
+ Element <c>i</c> is computed as <c>start + i * step</c>, never by repeated addition,
+ so rounding error does not accumulate.
+ </remarks>
+ <exception cref="T:YANum.Core.YANumValueError">The step is zero or not finite.</exception>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.identity.Static(System.Int32,Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>The square identity matrix.</summary>
+ <param name="n">Number of rows and columns.</param>
+ <param name="dtype">Element dtype; defaults to <see cref="P:YANum.Core.Config.DefaultFloat"/>.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.eye.Static(System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>A rank-2 array with ones on a diagonal and zeros elsewhere.</summary>
+ <param name="n">Number of rows.</param>
+ <param name="m">Number of columns; defaults to <paramref name="n"/>.</param>
+ <param name="k">Diagonal offset: 0 is the main diagonal, positive is above it, negative below.</param>
+ <param name="dtype">Element dtype; defaults to <see cref="P:YANum.Core.Config.DefaultFloat"/>.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.fullLike.Static``1(YANum.Core.NDArray,``0,Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>A filled array with the shape of an existing array.</summary>
+ <param name="prototype">The array whose shape to copy.</param>
+ <param name="value">The value; its type determines the dtype.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.emptyLike.Static(YANum.Core.NDArray,Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>An uninitialised array with the shape of an existing array.</summary>
+ <param name="prototype">The array whose shape and dtype to copy.</param>
+ <param name="dtype">Element dtype; defaults to the prototype's.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.onesLike.Static(YANum.Core.NDArray,Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>Ones with the shape of an existing array.</summary>
+ <param name="prototype">The array whose shape and dtype to copy.</param>
+ <param name="dtype">Element dtype; defaults to the prototype's.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.zerosLike.Static(YANum.Core.NDArray,Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>Zeros with the shape of an existing array.</summary>
+ <param name="prototype">The array whose shape and dtype to copy.</param>
+ <param name="dtype">Element dtype; defaults to the prototype's.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.full.Static``1(System.Int32[],``0,Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>An array filled with one value.</summary>
+ <param name="shape">The extents.</param>
+ <param name="value">The value; its type determines the dtype.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.ones.Static(System.Int32[],Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>An array of ones.</summary>
+ <param name="shape">The extents.</param>
+ <param name="dtype">Element dtype; defaults to <see cref="P:YANum.Core.Config.DefaultFloat"/>.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+ <exception cref="T:YANum.Core.YANumTypeError">The dtype is temporal or a string, where "one" has no meaning.</exception>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.empty.Static(System.Int32[],Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>An array whose contents are undefined.</summary>
+ <param name="shape">The extents.</param>
+ <param name="dtype">Element dtype; defaults to <see cref="P:YANum.Core.Config.DefaultFloat"/>.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data. Read only after writing every element.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.zeros.Static(System.Int32[],Microsoft.FSharp.Core.FSharpOption{YANum.Core.DType},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>An array of zeros.</summary>
+ <param name="shape">The extents. A zero extent is legal and yields a valid empty array.</param>
+ <param name="dtype">Element dtype; defaults to <see cref="P:YANum.Core.Config.DefaultFloat"/>.</param>
+ <param name="order">Layout order.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.scalar.Static``1(``0,Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>A rank-0 array holding a single value.</summary>
+ <param name="value">The value.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new rank-0 array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.ofStrings.Static(System.String[],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Boolean},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>A rank-1 fixed-width string array.</summary>
+ <param name="data">The source strings; <c>null</c> entries store as empty.</param>
+ <param name="width">Element width; defaults to the longest string, or 1 if all are empty.</param>
+ <param name="ascii">When set, uses <c>ascii&lt;n&gt;</c> instead of <c>utf16&lt;n&gt;</c>.</param>
+ <param name="order">Layout order; immaterial at rank 1.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+ <exception cref="T:YANum.Core.YANumOverflowError">
+ A string is longer than <paramref name="width"/> and
+ <see cref="P:YANum.Core.Config.StringOverflow"/> is <c>Throw</c>.
+ </exception>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.wrap.Static``1(``0[])">
+ <summary>
+ A rank-1 array aliasing a caller's array without copying.
+ </summary>
+ <param name="data">The array to alias. It is pinned for the lifetime of the result.</param>
+ <returns>A new array whose storage is the caller's array.</returns>
+ <remarks>
+ <b>Writes through the array are visible to the caller and vice versa</b>, and the
+ array stays pinned until the result's storage is released. For a <c>bool[]</c> the
+ bytes are normalised to 0 or 1 <b>in place</b>, which is observable in the caller's
+ array — the only way to honour the Bool invariant without copying.
+ </remarks>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.ofSeq.Static``1(System.Collections.Generic.IEnumerable{``0},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>A rank-1 array copied from a sequence.</summary>
+ <param name="data">The source elements; enumerated exactly once.</param>
+ <param name="order">Layout order; immaterial at rank 1.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.ofArray3D.Static``1(``0[0:, 0:],Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>A rank-3 array copied from a .NET rectangular array.</summary>
+ <param name="data">The source elements.</param>
+ <param name="order">Layout order of the result.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.ofArray2D.Static``1(``0[0:],Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>A rank-2 array copied from a .NET rectangular array.</summary>
+ <param name="data">The source elements.</param>
+ <param name="order">Layout order of the result.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.ofSpan.Static``1(System.ReadOnlySpan{``0},Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>A rank-1 array copied from a span.</summary>
+ <param name="data">The source elements.</param>
+ <param name="order">Layout order; immaterial at rank 1.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+ <remarks>Bool bytes are normalised to 0 or 1 on the way in.</remarks>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.NDArray.ofArray.Static``1(``0[],Microsoft.FSharp.Core.FSharpOption{YANum.Core.Order},Microsoft.FSharp.Core.FSharpOption{YANum.Core.StorageBackend})">
+ <summary>A rank-1 array copied from a .NET array.</summary>
+ <param name="data">The source elements.</param>
+ <param name="order">Layout order; immaterial at rank 1.</param>
+ <param name="backend">Allocator to use.</param>
+ <returns>A new array owning its data.</returns>
+</member>
+<member name="M:YANum.Core.NDArrayCreation.ofContiguous``1(System.ReadOnlySpan{``0},System.Int32[],YANum.Core.Order,YANum.Core.StorageBackend)">
+<summary>
+ Copies a contiguous run of &apos;T into a fresh dense array, normalising Bool bytes.
+</summary>
+</member>
+<member name="T:YANum.Core.NDArrayCreation">
+ <summary>
+ Array construction. Every function takes an optional <c>order</c> defaulting to
+ <see cref="P:YANum.Core.Config.DefaultOrder"/> and an optional <c>backend</c> defaulting to
+ <see cref="P:YANum.Core.Config.DefaultStorage"/>.
+ </summary>
+ <remarks>
+ These are static members on <see cref="T:YANum.Core.NDArray"/> rather than functions in a
+ module, because F# permits optional parameters only on type members. The call shape
+ (<c>NDArray.zeros [| 2; 3 |]</c>) is unchanged.
+ </remarks>
+</member>
+<member name="M:YANum.Core.Fill.writeFloat(YANum.Core.DType,System.IntPtr,System.Double)">
+<summary>
+ Writes one element of any dtype from a double, converting as the dtype requires.
+ Temporal dtypes take the value as their natural integral unit; string dtypes take its
+ invariant text rendering.
+</summary>
+</member>
+<member name="T:YANum.Core.Fill">
+ <summary>Scalar writers used by the creation functions that produce values of any dtype.</summary>
+</member>
+</members>
+</doc>

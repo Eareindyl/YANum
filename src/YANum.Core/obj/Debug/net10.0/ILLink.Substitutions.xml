@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="YANum.Core">
+    <resource name="FSharpSignatureData.YANum.Core" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.YANum.Core" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.YANum.Core" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.YANum.Core" action="remove"></resource>
+    <resource name="FSharpOptimizationData.YANum.Core" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.YANum.Core" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.YANum.Core" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.YANum.Core" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.YANum.Core" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.YANum.Core" action="remove"></resource>
+  </assembly>
+</linker>

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/YANum.Core/YANum.Core.fsproj" />
+  <Project Path="tests/YANum.Tests/YANum.Tests.fsproj" />
+  <Project Path="bench/YANum.Benchmarks/YANum.Benchmarks.fsproj" />
+</Solution>

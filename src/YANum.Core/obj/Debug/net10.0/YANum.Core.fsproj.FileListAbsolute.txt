@@ -1,0 +1,13 @@
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/obj/Debug/net10.0/YANum.Core.fsproj.AssemblyReference.cache
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/obj/Debug/net10.0/YANum.Core.AssemblyInfoInputs.cache
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/obj/Debug/net10.0/YANum.Core.AssemblyInfo.fs
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/obj/Debug/net10.0/YANum.Core.fsproj.CoreCompileInputs.cache
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/bin/Debug/net10.0/YANum.Core.deps.json
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/bin/Debug/net10.0/YANum.Core.dll
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/bin/Debug/net10.0/YANum.Core.pdb
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/bin/Debug/net10.0/YANum.Core.xml
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/obj/Debug/net10.0/YANum.Core.dll
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/obj/Debug/net10.0/refint/YANum.Core.dll
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/obj/Debug/net10.0/YANum.Core.xml
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/obj/Debug/net10.0/YANum.Core.pdb
+/Users/mail120978/Developer/F#/YANum/src/YANum.Core/obj/Debug/net10.0/ref/YANum.Core.dll

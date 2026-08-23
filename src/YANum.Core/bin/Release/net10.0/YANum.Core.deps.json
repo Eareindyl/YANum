@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "YANum.Core/1.0.0": {
+        "dependencies": {
+          "FSharp.Core": "10.1.202"
+        },
+        "runtime": {
+          "YANum.Core.dll": {}
+        }
+      },
+      "FSharp.Core/10.1.202": {
+        "runtime": {
+          "lib/netstandard2.1/FSharp.Core.dll": {
+            "assemblyVersion": "10.1.0.0",
+            "fileVersion": "10.102.226.18118"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "YANum.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FSharp.Core/10.1.202": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1m8vkxuzhK6Erh99lHFu2IZSqwLtiRNVj4gT7QUnnIUEPovuogFTdaxnMnPD12fm00oWJPhJ4Vw0VDIBimYzJA==",
+      "path": "fsharp.core/10.1.202",
+      "hashPath": "fsharp.core.10.1.202.nupkg.sha512"
+    }
+  }
+}

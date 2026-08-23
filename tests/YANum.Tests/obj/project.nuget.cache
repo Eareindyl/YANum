@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "JSC2e/5qxg4=",
+  "success": true,
+  "projectFilePath": "/Users/mail120978/Developer/F#/YANum/tests/YANum.Tests/YANum.Tests.fsproj",
+  "expectedPackageFiles": [
+    "/Users/mail120978/.nuget/packages/fscheck/3.4.0/fscheck.3.4.0.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/fscheck.xunit/3.4.0/fscheck.xunit.3.4.0.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/fsharp.core/10.1.202/fsharp.core.10.1.202.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/microsoft.codecoverage/18.9.0/microsoft.codecoverage.18.9.0.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/microsoft.net.test.sdk/18.9.0/microsoft.net.test.sdk.18.9.0.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/microsoft.testplatform.objectmodel/18.9.0/microsoft.testplatform.objectmodel.18.9.0.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/microsoft.testplatform.testhost/18.9.0/microsoft.testplatform.testhost.18.9.0.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/xunit/2.9.3/xunit.2.9.3.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/xunit.abstractions/2.0.3/xunit.abstractions.2.0.3.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/xunit.analyzers/1.18.0/xunit.analyzers.1.18.0.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/xunit.assert/2.9.3/xunit.assert.2.9.3.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/xunit.core/2.9.3/xunit.core.2.9.3.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/xunit.extensibility.core/2.9.3/xunit.extensibility.core.2.9.3.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/xunit.extensibility.execution/2.9.3/xunit.extensibility.execution.2.9.3.nupkg.sha512",
+    "/Users/mail120978/.nuget/packages/xunit.runner.visualstudio/2.8.2/xunit.runner.visualstudio.2.8.2.nupkg.sha512"
+  ],
+  "logs": []
+}

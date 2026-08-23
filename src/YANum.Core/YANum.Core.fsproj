@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>YANum.Core</AssemblyName>
+    <RootNamespace>YANum.Core</RootNamespace>
+    <OtherFlags>$(OtherFlags) --warnon:3390</OtherFlags>
+    <Description>YANum — a NumPy-shaped n-dimensional array library for .NET. Phase 1: foundations.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Errors.fs" />
+    <Compile Include="Complex32.fs" />
+    <Compile Include="DType.fs" />
+    <Compile Include="Config.fs" />
+    <Compile Include="Promotion.fs" />
+    <Compile Include="Storage.fs" />
+    <Compile Include="Shape.fs" />
+    <Compile Include="ArrayDesc.fs" />
+    <Compile Include="Printing.fs" />
+    <Compile Include="NDArray.fs" />
+    <Compile Include="Creation.fs" />
+  </ItemGroup>
+
+</Project>
